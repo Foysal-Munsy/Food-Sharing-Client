@@ -51,7 +51,7 @@ export default function MyFoods() {
               <td className="py-2 px-4 capitalize">{food.status}</td>
               <td className="py-2 px-4 flex gap-2 flex-wrap">
                 <Link
-                  to={`/update-food/${food._id}`}
+                  to={`/update/${food._id}`}
                   className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-xs"
                 >
                   Update

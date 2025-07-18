@@ -10,6 +10,7 @@ import DetailsPage from "../pages/DetailsPage";
 import axios from "axios";
 import MyFoods from "../pages/MyFoods";
 import RequestedFoods from "../pages/RequestedFoods";
+import Update from "../pages/Update";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -43,6 +44,16 @@ const mainRoutes = createBrowserRouter([
         loader: async ({ params }) => {
           const { data } = await axios.get(
             `http://localhost:5001/details/${params.foodID}`
+          );
+          return data;
+        },
+      },
+      {
+        path: "/update/:foodID",
+        element: <Update />,
+        loader: async ({ params }) => {
+          const { data } = await axios.get(
+            `http://localhost:5001/update/${params.foodID}`
           );
           return data;
         },
