@@ -16,7 +16,26 @@ export default function MyFoods() {
       })
       .then((res) => setFoods(res.data));
   }, [user]);
+  const handleDelete = async (id) => {
+    const confirm = window.confirm(
+      "Are you sure you want to delete this item?"
+    );
+    if (!confirm) return;
 
+    try {
+      const res = await axios.delete(`http://localhost:5001/foods/${id}`);
+      if (res.data.deletedCount > 0) {
+        alert("Food item deleted successfully!");
+        // Update UI by removing deleted item
+        setFoods((prev) => prev.filter((food) => food._id !== id));
+      } else {
+        alert("Food item not found or already deleted.");
+      }
+    } catch (err) {
+      console.error("Error deleting food item:", err);
+      alert("Failed to delete food item.");
+    }
+  };
   return (
     <div className="w-full overflow-x-auto">
       <table className="w-full text-sm text-left text-gray-700 border border-gray-200">
@@ -57,7 +76,7 @@ export default function MyFoods() {
                   Update
                 </Link>
                 <button
-                  //   onClick={() => handleDelete(food._id)}
+                  onClick={() => handleDelete(food._id)}
                   className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-xs"
                 >
                   Delete
