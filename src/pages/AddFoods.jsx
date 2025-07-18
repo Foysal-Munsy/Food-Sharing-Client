@@ -31,7 +31,7 @@ const AddFoods = () => {
       donorName: user.displayName,
       donorImg: user.photoURL,
     };
-    // console.log("Form submitted:", data);
+    console.log("Form submitted:", data);
 
     axios.post("http://localhost:5001/add-food", data).then((res) => {
       console.log("axios result ", res.data);
