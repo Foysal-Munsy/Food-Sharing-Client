@@ -42,9 +42,9 @@ const AddFoods = () => {
     <div>
       <form
         onSubmit={handleSubmit}
-        className="max-w-3xl mx-auto p-6 bg-amber-50 rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-2 gap-4"
+        className="max-w-3xl mt-4 mx-auto p-6 bg-amber-50 rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        <h2 className="text-3xl font-bold text-center text-green-700 md:col-span-2">
+        <h2 className="text-3xl font-extrabold text-center text-amber-800 md:col-span-2 mb-4">
           Add Food
         </h2>
 
@@ -54,7 +54,7 @@ const AddFoods = () => {
           placeholder="Food Name"
           value={formData.name}
           onChange={handleChange}
-          className="border border-green-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+          className="border border-amber-300 p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-amber-400"
           required
         />
         <input
@@ -63,7 +63,7 @@ const AddFoods = () => {
           placeholder="Food Image URL"
           value={formData.image}
           onChange={handleChange}
-          className="border border-green-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+          className="border border-amber-300 p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-amber-400"
           required
         />
         <input
@@ -72,7 +72,7 @@ const AddFoods = () => {
           placeholder="Food Quantity"
           value={formData.quantity}
           onChange={handleChange}
-          className="border border-green-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+          className="border border-amber-300 p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-amber-400"
           required
         />
         <input
@@ -81,7 +81,7 @@ const AddFoods = () => {
           placeholder="Pickup Location"
           value={formData.location}
           onChange={handleChange}
-          className="border border-green-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+          className="border border-amber-300 p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-amber-400"
           required
         />
         <input
@@ -89,7 +89,7 @@ const AddFoods = () => {
           name="date"
           value={formData.date}
           onChange={handleChange}
-          className="border border-green-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+          className="border border-amber-300 p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-amber-400"
           required
         />
         <textarea
@@ -97,24 +97,24 @@ const AddFoods = () => {
           placeholder="Additional Notes"
           value={formData.notes}
           onChange={handleChange}
-          className="border border-green-300 p-2 rounded w-full md:col-span-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+          className="border border-amber-300 p-3 rounded w-full md:col-span-2 focus:outline-none focus:ring-2 focus:ring-amber-400 resize-none"
           rows="3"
         ></textarea>
 
-        <div className="flex items-center space-x-4 col-span-1 md:col-span-2 border border-green-200 bg-white p-3 rounded">
+        <div className="flex items-center space-x-4 col-span-1 md:col-span-2 border border-amber-200 bg-white p-4 rounded shadow-sm">
           <img
             src={user?.photoURL}
             alt="Donor"
             className="w-12 h-12 rounded-full object-cover"
           />
           <div>
-            <p className="font-semibold text-green-700">{user.displayName}</p>
+            <p className="font-semibold text-amber-800">{user.displayName}</p>
             <p className="text-sm text-gray-600">{user.email}</p>
           </div>
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium text-green-700">
+          <label className="block mb-2 text-sm font-semibold text-amber-800">
             Food Status
           </label>
           <input
@@ -122,13 +122,13 @@ const AddFoods = () => {
             name="status"
             value={formData.status}
             readOnly
-            className="border border-green-300 p-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-green-400"
+            className="border border-amber-300 p-3 rounded w-full focus:outline-none focus:ring-2 focus:ring-amber-400"
           />
         </div>
 
         <button
           type="submit"
-          className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded mt-4 md:col-span-2"
+          className="bg-amber-600 hover:bg-amber-700 text-white py-3 px-5 rounded mt-6 md:col-span-2 font-semibold transition duration-200"
         >
           Add Food
         </button>

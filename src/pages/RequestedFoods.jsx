@@ -24,8 +24,8 @@ export default function RequestedFoods() {
 
   return (
     <div className="w-full overflow-x-auto">
-      <table className="w-full text-sm text-left text-gray-700 border border-gray-200">
-        <thead className="bg-green-100 text-gray-800 text-sm">
+      <table className="w-full text-sm text-left text-amber-900 border border-amber-300">
+        <thead className="bg-amber-100 text-amber-800 text-sm font-semibold">
           <tr>
             <th className="py-3 px-4">Donor Name</th>
             <th className="py-3 px-4">Pickup Location</th>
@@ -36,7 +36,10 @@ export default function RequestedFoods() {
         <tbody>
           {foods.length === 0 ? (
             <tr>
-              <td colSpan={4} className="text-center py-4">
+              <td
+                colSpan={4}
+                className="text-center py-6 text-amber-700 italic"
+              >
                 No requested foods found.
               </td>
             </tr>
@@ -44,14 +47,14 @@ export default function RequestedFoods() {
             foods.map((food) => (
               <tr
                 key={food._id}
-                className="border-b hover:bg-green-50 transition"
+                className="border-b border-amber-200 hover:bg-amber-50 transition"
               >
-                <td className="py-2 px-4">
+                <td className="py-3 px-4 font-medium">
                   {food.donorName || food.donorEmail || "Unknown Donor"}
                 </td>
-                <td className="py-2 px-4">{food.location || "N/A"}</td>
-                <td className="py-2 px-4">{food.date || "N/A"}</td>
-                <td className="py-2 px-4">
+                <td className="py-3 px-4">{food.location || "N/A"}</td>
+                <td className="py-3 px-4">{food.date || "N/A"}</td>
+                <td className="py-3 px-4">
                   {food.requestedAt
                     ? new Date(food.requestedAt).toLocaleDateString()
                     : "N/A"}

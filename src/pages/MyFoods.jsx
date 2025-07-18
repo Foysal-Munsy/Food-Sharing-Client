@@ -41,8 +41,8 @@ export default function MyFoods() {
   };
   return (
     <div className="w-full overflow-x-auto">
-      <table className="w-full text-sm text-left text-gray-700 border border-gray-200">
-        <thead className="bg-green-100 text-gray-800 text-sm">
+      <table className="w-full text-sm text-left text-gray-700 border border-amber-300">
+        <thead className="bg-amber-100 text-amber-900 text-sm font-semibold">
           <tr>
             <th className="py-3 px-4">Image</th>
             <th className="py-3 px-4">Name</th>
@@ -57,30 +57,34 @@ export default function MyFoods() {
           {foods.map((food) => (
             <tr
               key={food._id}
-              className="border-b hover:bg-green-50 transition"
+              className="border-b border-amber-200 hover:bg-amber-50 transition"
             >
-              <td className="py-2 px-4">
+              <td className="py-3 px-4">
                 <img
                   src={food.image}
                   alt={food.name}
                   className="w-14 h-14 object-cover rounded"
                 />
               </td>
-              <td className="py-2 px-4">{food.name}</td>
-              <td className="py-2 px-4">{food.quantity}</td>
-              <td className="py-2 px-4">{food.location}</td>
-              <td className="py-2 px-4">{food.date}</td>
-              <td className="py-2 px-4 capitalize">{food.status}</td>
-              <td className="py-2 px-4 flex gap-2 flex-wrap">
+              <td className="py-3 px-4 font-medium text-amber-900">
+                {food.name}
+              </td>
+              <td className="py-3 px-4">{food.quantity}</td>
+              <td className="py-3 px-4">{food.location}</td>
+              <td className="py-3 px-4">{food.date}</td>
+              <td className="py-3 px-4 capitalize text-amber-700 font-semibold">
+                {food.status}
+              </td>
+              <td className="py-3 px-4 flex gap-2 flex-wrap">
                 <Link
                   to={`/update/${food._id}`}
-                  className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-xs"
+                  className="bg-amber-600 text-white px-3 py-1 rounded hover:bg-amber-700 text-xs transition"
                 >
                   Update
                 </Link>
                 <button
                   onClick={() => handleDelete(food._id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-xs"
+                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-xs transition"
                 >
                   Delete
                 </button>

@@ -47,8 +47,8 @@ export default function Update() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
-      <h2 className="text-2xl font-bold mb-6 text-center text-green-700">
+    <div className="max-w-3xl mx-auto p-6 bg-amber-50 shadow-md rounded-lg mt-10">
+      <h2 className="text-2xl font-bold mb-6 text-center text-amber-800">
         Update Food Information
       </h2>
 
@@ -82,25 +82,25 @@ export default function Update() {
 
         {/* Read-only Status Display */}
         <div>
-          <label className="block text-sm text-gray-600 mb-1">Status</label>
-          <p className="border border-gray-300 rounded p-2 bg-gray-100 text-gray-700">
+          <label className="block text-sm text-amber-700 mb-1">Status</label>
+          <p className="border border-amber-300 rounded p-2 bg-amber-100 text-amber-900">
             {status}
           </p>
         </div>
 
         <div>
-          <label className="block text-sm text-gray-600 mb-1">Notes</label>
+          <label className="block text-sm text-amber-700 mb-1">Notes</label>
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="w-full border border-gray-300 rounded p-2"
+            className="w-full border border-amber-300 rounded p-2 bg-amber-50 text-amber-900"
             rows="4"
           ></textarea>
         </div>
 
         <button
           type="submit"
-          className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded"
+          className="w-full bg-amber-700 hover:bg-amber-800 text-white py-2 px-4 rounded transition"
         >
           Update Food
         </button>
@@ -111,12 +111,12 @@ export default function Update() {
 
 const Input = ({ label, value, onChange, type = "text" }) => (
   <div>
-    <label className="block text-sm text-gray-600 mb-1">{label}</label>
+    <label className="block text-sm text-amber-700 mb-1">{label}</label>
     <input
       type={type}
       value={value}
       onChange={onChange}
-      className="w-full border border-gray-300 rounded p-2"
+      className="w-full border border-amber-300 rounded p-2 bg-amber-50 text-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-400"
     />
   </div>
 );
