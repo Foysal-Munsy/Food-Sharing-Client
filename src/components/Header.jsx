@@ -15,8 +15,8 @@ const Header = () => {
     },
 
     {
-      name: "Link",
-      path: "/",
+      name: "Add Food",
+      path: "/add-food",
     },
   ];
   return (
