@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import axios from "axios";
 
 const DetailsPage = () => {
   const {
@@ -24,32 +25,17 @@ const DetailsPage = () => {
   const currentDate = new Date().toLocaleDateString();
 
   const handleRequest = () => {
-    const requestData = {
-      foodId: _id,
-      foodName: name,
-      donorEmail,
-      donorName,
-      requesterEmail: user?.email,
-      requestDate: currentDate,
-      pickupLocation: location,
-      expireDate: date,
-      additionalNotes: userNotes,
-    };
-
-    console.log("Request Data:", requestData);
-
-    // Example POST request
-    // fetch("/api/food-requests", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(requestData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     console.log(result);
-    //   });
+    axios
+      .patch(
+        `http://localhost:5001/request/${_id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${user.accessToken}`,
+          },
+        }
+      )
+      .then((res) => console.log(res.data));
   };
 
   return (
