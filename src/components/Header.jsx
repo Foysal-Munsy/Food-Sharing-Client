@@ -18,6 +18,10 @@ const Header = () => {
       path: "/my-foods",
     },
     {
+      name: "Requested Foods",
+      path: "/requested-foods",
+    },
+    {
       name: "Add Food",
       path: "/add-food",
     },

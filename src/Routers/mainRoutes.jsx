@@ -9,6 +9,7 @@ import AvailableFoods from "../pages/AvailableFoods";
 import DetailsPage from "../pages/DetailsPage";
 import axios from "axios";
 import MyFoods from "../pages/MyFoods";
+import RequestedFoods from "../pages/RequestedFoods";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const mainRoutes = createBrowserRouter([
       {
         path: "/my-foods",
         element: <MyFoods />,
+      },
+      {
+        path: "/requested-foods",
+        element: <RequestedFoods />,
       },
       {
         path: "/details/:foodID",
