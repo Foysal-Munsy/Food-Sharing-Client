@@ -6,6 +6,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AddFoods from "../pages/AddFoods";
 import AvailableFoods from "../pages/AvailableFoods";
+import DetailsPage from "../pages/DetailsPage";
+import axios from "axios";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -24,6 +26,16 @@ const mainRoutes = createBrowserRouter([
       {
         path: "/available-foods",
         element: <AvailableFoods />,
+      },
+      {
+        path: "/details/:foodID",
+        element: <DetailsPage />,
+        loader: async ({ params }) => {
+          const { data } = await axios.get(
+            `http://localhost:5001/details/${params.foodID}`
+          );
+          return data;
+        },
       },
       {
         path: "login",

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const AvailableFoods = () => {
   const [foods, setFoods] = useState([]);
@@ -45,9 +46,12 @@ const AvailableFoods = () => {
                 </span>
               </p>
 
-              <button className="mt-4 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition duration-200 w-full">
+              <Link
+                to={`/details/${food._id}`}
+                className="mt-4 block text-center bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition duration-200 w-full"
+              >
                 View Details
-              </button>
+              </Link>
             </div>
           </div>
         ))}
