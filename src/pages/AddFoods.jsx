@@ -1,7 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const AddFoods = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user.email);
   const [formData, setFormData] = useState({
     name: "",
     image: "",
@@ -22,24 +25,15 @@ const AddFoods = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    const data = {
+      ...formData,
+      donorEmail: user.email,
+      donorName: user.displayName,
+      donorImg: user.photoURL,
+    };
+    // console.log("Form submitted:", data);
 
-    // Submit to backend (example)
-    // try {
-    //   const res = await fetch("/api/foods", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(formData),
-    //   });
-
-    //   const result = await res.json();
-    //   console.log("Server response:", result);
-    // } catch (error) {
-    //   console.error("Error submitting form:", error);
-    // }
-    axios.post("http://localhost:5001/add-food", formData).then((res) => {
+    axios.post("http://localhost:5001/add-food", data).then((res) => {
       console.log("axios result ", res.data);
     });
   };
@@ -109,13 +103,13 @@ const AddFoods = () => {
 
         <div className="flex items-center space-x-4 col-span-1 md:col-span-2 border border-green-200 bg-white p-3 rounded">
           <img
-            src="https://i.pravatar.cc/100"
+            src={user?.photoURL}
             alt="Donor"
             className="w-12 h-12 rounded-full object-cover"
           />
           <div>
-            <p className="font-semibold text-green-700">Donor Name</p>
-            <p className="text-sm text-gray-600">donor@example.com</p>
+            <p className="font-semibold text-green-700">{user.displayName}</p>
+            <p className="text-sm text-gray-600">{user.email}</p>
           </div>
         </div>
 
