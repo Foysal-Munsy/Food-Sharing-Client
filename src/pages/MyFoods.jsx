@@ -14,7 +14,10 @@ export default function MyFoods() {
           Authorization: `Bearer ${user.accessToken}`,
         },
       })
-      .then((res) => setFoods(res.data));
+      .then((res) => setFoods(res.data))
+      .catch((err) => {
+        console.error("Error fetching foods:", err);
+      });
   }, [user]);
   const handleDelete = async (id) => {
     const confirm = window.confirm(
