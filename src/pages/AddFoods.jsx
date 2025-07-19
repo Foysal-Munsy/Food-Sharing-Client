@@ -34,7 +34,10 @@ const AddFoods = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:5001/add-food", data);
+      const res = await axios.post(
+        "https://food-sharing-server-seven.vercel.app/add-food",
+        data
+      );
       if (res.data.insertedId || res.data.acknowledged) {
         Swal.fire({
           title: "Success!",

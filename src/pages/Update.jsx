@@ -35,7 +35,7 @@ export default function Update() {
 
     try {
       const res = await axios.put(
-        `http://localhost:5001/update/${_id}`,
+        `https://food-sharing-server-seven.vercel.app/update/${_id}`,
         updatedFood
       );
       console.log("Update response: ", res.data);

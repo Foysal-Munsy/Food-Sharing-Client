@@ -28,7 +28,7 @@ const DetailsPage = () => {
   const handleRequest = () => {
     axios
       .patch(
-        `http://localhost:5001/request/${_id}`,
+        `https://food-sharing-server-seven.vercel.app/request/${_id}`,
         {},
         {
           headers: {

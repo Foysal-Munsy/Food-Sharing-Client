@@ -60,7 +60,7 @@ const mainRoutes = createBrowserRouter([
         ),
         loader: async ({ params }) => {
           const { data } = await axios.get(
-            `http://localhost:5001/details/${params.foodID}`
+            `https://food-sharing-server-seven.vercel.app/details/${params.foodID}`
           );
           return data;
         },
@@ -70,7 +70,7 @@ const mainRoutes = createBrowserRouter([
         element: <Update />,
         loader: async ({ params }) => {
           const { data } = await axios.get(
-            `http://localhost:5001/update/${params.foodID}`
+            `https://food-sharing-server-seven.vercel.app/update/${params.foodID}`
           );
           return data;
         },

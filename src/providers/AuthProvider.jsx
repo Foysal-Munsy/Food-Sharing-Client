@@ -48,11 +48,11 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("🚀 ~ unsubscribe ~ currentUser:", currentUser);
+      // console.log("🚀 ~ unsubscribe ~ currentUser:", currentUser);
       if (currentUser) {
         setUser(currentUser);
 
-        axios.get("http://localhost:5001/", {
+        axios.get("https://food-sharing-server-seven.vercel.app/", {
           headers: {
             Authorization: `Bearer ${currentUser.accessToken}`,
           },

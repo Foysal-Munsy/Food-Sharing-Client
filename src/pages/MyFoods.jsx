@@ -12,7 +12,7 @@ export default function MyFoods() {
   useEffect(() => {
     if (!user) return;
     axios
-      .get("http://localhost:5001/my-foods", {
+      .get("https://food-sharing-server-seven.vercel.app/my-foods", {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },
@@ -37,7 +37,9 @@ export default function MyFoods() {
 
     if (result.isConfirmed) {
       try {
-        const res = await axios.delete(`http://localhost:5001/foods/${id}`);
+        const res = await axios.delete(
+          `https://food-sharing-server-seven.vercel.app/foods/${id}`
+        );
         if (res.data.deletedCount > 0) {
           setFoods((prev) => prev.filter((food) => food._id !== id));
           Swal.fire("Deleted!", "Food item has been deleted.", "success");

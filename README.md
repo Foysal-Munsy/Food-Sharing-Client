@@ -4,7 +4,7 @@ A modern React + Vite authentication template with Firebase, styled using Tailwi
 
 ## 🌐 Live Demo
 
-[Visit the Live App](https://your-live-url.com)
+[Visit the Live App](https://food-sharing-e49b8.web.app)
 
 ---
 

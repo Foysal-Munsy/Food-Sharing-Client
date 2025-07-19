@@ -12,7 +12,7 @@ export default function RequestedFoods() {
 
     setLoading(true);
     axios
-      .get("http://localhost:5001/requested-foods", {
+      .get("https://food-sharing-server-seven.vercel.app/requested-foods", {
         headers: {
           Authorization: `Bearer ${user.accessToken}`,
         },

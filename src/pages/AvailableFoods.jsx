@@ -11,11 +11,13 @@ const AvailableFoods = () => {
   const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(true); // Layout toggle
 
   useEffect(() => {
-    axios.get("http://localhost:5001/available-foods").then((res) => {
-      const sorted = sortFoods(res.data, sortOrder);
-      setFoods(res.data);
-      setSortedFoods(sorted);
-    });
+    axios
+      .get("https://food-sharing-server-seven.vercel.app/available-foods")
+      .then((res) => {
+        const sorted = sortFoods(res.data, sortOrder);
+        setFoods(res.data);
+        setSortedFoods(sorted);
+      });
   }, []);
 
   useEffect(() => {
