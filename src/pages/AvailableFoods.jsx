@@ -8,6 +8,7 @@ const AvailableFoods = () => {
   const [sortedFoods, setSortedFoods] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
+  const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(true); // Layout toggle
 
   useEffect(() => {
     axios.get("http://localhost:5001/available-foods").then((res) => {
@@ -39,6 +40,16 @@ const AvailableFoods = () => {
       <h2 className="text-3xl font-extrabold text-amber-800 mb-6 text-center tracking-wide">
         Available Foods
       </h2>
+
+      {/* Toggle Grid Layout Button */}
+      <div className="text-center mb-6">
+        <button
+          onClick={() => setIsThreeColumnLayout(!isThreeColumnLayout)}
+          className="bg-amber-600 hover:bg-amber-700 text-white px-5 py-2 rounded font-semibold transition duration-200"
+        >
+          Change Layout
+        </button>
+      </div>
 
       {/* Search Section */}
       <div className="max-w-md mx-auto mb-6">
@@ -72,7 +83,11 @@ const AvailableFoods = () => {
           No matching food found.
         </p>
       ) : (
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div
+          className={`grid gap-8 sm:grid-cols-2 ${
+            isThreeColumnLayout ? "lg:grid-cols-3" : "lg:grid-cols-2"
+          } xl:grid-cols-${isThreeColumnLayout ? "3" : "2"}`}
+        >
           {filteredFoods.map((food) => (
             <div
               key={food._id}
