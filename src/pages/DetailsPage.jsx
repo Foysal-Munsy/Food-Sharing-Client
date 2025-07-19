@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const DetailsPage = () => {
   const {
@@ -35,7 +36,32 @@ const DetailsPage = () => {
           },
         }
       )
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        if (res.data.modifiedCount > 0 || res.data.success) {
+          Swal.fire({
+            icon: "success",
+            title: "Request Successful",
+            text: "Your food request has been submitted!",
+            confirmButtonColor: "#d97706", // amber-600
+          });
+        } else {
+          Swal.fire({
+            icon: "info",
+            title: "Already Requested",
+            text: "You have already requested this item.",
+            confirmButtonColor: "#d97706",
+          });
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        Swal.fire({
+          icon: "error",
+          title: "Request Failed",
+          text: "There was a problem submitting your request.",
+          confirmButtonColor: "#dc2626", // red-600
+        });
+      });
   };
 
   return (

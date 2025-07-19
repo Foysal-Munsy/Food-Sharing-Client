@@ -5,7 +5,7 @@ import axios from "axios";
 export default function RequestedFoods() {
   const { user } = useContext(AuthContext);
   const [foods, setFoods] = useState([]);
-
+  console.log("requested food ", foods);
   useEffect(() => {
     if (!user) return; // wait for user to be ready
 

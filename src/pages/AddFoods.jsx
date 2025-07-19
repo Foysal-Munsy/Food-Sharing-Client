@@ -1,14 +1,15 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddFoods = () => {
   const { user } = useContext(AuthContext);
-  console.log(user.email);
+
   const [formData, setFormData] = useState({
     name: "",
     image: "",
-    quantity: 1,
+    quantity: "",
     location: "",
     date: "",
     notes: "",
@@ -31,11 +32,35 @@ const AddFoods = () => {
       donorName: user.displayName,
       donorImg: user.photoURL,
     };
-    console.log("Form submitted:", data);
 
-    axios.post("http://localhost:5001/add-food", data).then((res) => {
-      console.log("axios result ", res.data);
-    });
+    try {
+      const res = await axios.post("http://localhost:5001/add-food", data);
+      if (res.data.insertedId || res.data.acknowledged) {
+        Swal.fire({
+          title: "Success!",
+          text: "Food has been added successfully!",
+          icon: "success",
+          confirmButtonColor: "#f59e0b",
+        });
+        setFormData({
+          name: "",
+          image: "",
+          quantity: "",
+          location: "",
+          date: "",
+          notes: "",
+          status: "available",
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Error!",
+        text: "Something went wrong while adding the food.",
+        icon: "error",
+        confirmButtonColor: "#f59e0b",
+      });
+      console.error(error);
+    }
   };
 
   return (

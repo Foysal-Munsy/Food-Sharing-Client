@@ -2,12 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
 import { Link } from "react-router";
+import Swal from "sweetalert2";
 
 export default function MyFoods() {
   const { user } = useContext(AuthContext);
   const [foods, setFoods] = useState([]);
-  console.log("my foods: ", foods);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
+    if (!user) return;
     axios
       .get("http://localhost:5001/my-foods", {
         headers: {
@@ -17,30 +20,62 @@ export default function MyFoods() {
       .then((res) => setFoods(res.data))
       .catch((err) => {
         console.error("Error fetching foods:", err);
-      });
+      })
+      .finally(() => setLoading(false));
   }, [user]);
-  const handleDelete = async (id) => {
-    const confirm = window.confirm(
-      "Are you sure you want to delete this item?"
-    );
-    if (!confirm) return;
 
-    try {
-      const res = await axios.delete(`http://localhost:5001/foods/${id}`);
-      if (res.data.deletedCount > 0) {
-        alert("Food item deleted successfully!");
-        // Update UI by removing deleted item
-        setFoods((prev) => prev.filter((food) => food._id !== id));
-      } else {
-        alert("Food item not found or already deleted.");
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        const res = await axios.delete(`http://localhost:5001/foods/${id}`);
+        if (res.data.deletedCount > 0) {
+          setFoods((prev) => prev.filter((food) => food._id !== id));
+          Swal.fire("Deleted!", "Food item has been deleted.", "success");
+        } else {
+          Swal.fire(
+            "Not Found",
+            "Food item not found or already deleted.",
+            "info"
+          );
+        }
+      } catch (err) {
+        console.error("Error deleting food item:", err);
+        Swal.fire("Error", "Failed to delete food item.", "error");
       }
-    } catch (err) {
-      console.error("Error deleting food item:", err);
-      alert("Failed to delete food item.");
     }
   };
+
+  if (loading) {
+    return (
+      <div className="text-center text-amber-700 py-10 font-medium text-lg">
+        Loading your food items...
+      </div>
+    );
+  }
+
+  if (foods.length === 0) {
+    return (
+      <div className="text-center text-amber-700 py-10 font-semibold text-xl">
+        You have not listed any food items yet.
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="w-full overflow-x-auto py-8 px-4">
+      <h2 className="text-3xl font-extrabold text-amber-800 mb-6 text-center">
+        My Listed Foods
+      </h2>
       <table className="w-full text-sm text-left text-gray-700 border border-amber-300">
         <thead className="bg-amber-100 text-amber-900 text-sm font-semibold">
           <tr>

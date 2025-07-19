@@ -4,6 +4,7 @@ import { Link } from "react-router";
 
 const AvailableFoods = () => {
   const [foods, setFoods] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:5001/available-foods")
@@ -16,49 +17,55 @@ const AvailableFoods = () => {
         Available Foods
       </h2>
 
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {foods.map((food) => (
-          <div
-            key={food._id}
-            className="bg-white rounded-xl shadow-lg overflow-hidden border border-amber-200 flex flex-col"
-          >
-            <img
-              src={food.image}
-              alt={food.name}
-              className="w-full h-48 object-cover"
-            />
+      {foods.length === 0 ? (
+        <p className="text-center text-lg text-amber-600 font-medium">
+          No food available at the moment. Please check back later.
+        </p>
+      ) : (
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {foods.map((food) => (
+            <div
+              key={food._id}
+              className="bg-white rounded-xl shadow-lg overflow-hidden border border-amber-200 flex flex-col"
+            >
+              <img
+                src={food.image}
+                alt={food.name}
+                className="w-full h-48 object-cover"
+              />
 
-            <div className="p-5 flex flex-col flex-grow">
-              <h3 className="text-xl font-semibold text-amber-900 mb-2">
-                {food.name}
-              </h3>
-              <p className="text-sm text-amber-700 mb-1">
-                <span className="font-medium">Quantity:</span> {food.quantity}
-              </p>
-              <p className="text-sm text-amber-700 mb-1">
-                <span className="font-medium">Pickup Location:</span>{" "}
-                {food.location}
-              </p>
-              <p className="text-sm text-amber-700 mb-1">
-                <span className="font-medium">Expire Date:</span> {food.date}
-              </p>
-              <p className="text-sm text-amber-600 mt-auto">
-                Status:{" "}
-                <span className="font-semibold text-amber-700 capitalize">
-                  {food.status}
-                </span>
-              </p>
+              <div className="p-5 flex flex-col flex-grow">
+                <h3 className="text-xl font-semibold text-amber-900 mb-2">
+                  {food.name}
+                </h3>
+                <p className="text-sm text-amber-700 mb-1">
+                  <span className="font-medium">Quantity:</span> {food.quantity}
+                </p>
+                <p className="text-sm text-amber-700 mb-1">
+                  <span className="font-medium">Pickup Location:</span>{" "}
+                  {food.location}
+                </p>
+                <p className="text-sm text-amber-700 mb-1">
+                  <span className="font-medium">Expire Date:</span> {food.date}
+                </p>
+                <p className="text-sm text-amber-600 mt-auto">
+                  Status:{" "}
+                  <span className="font-semibold text-amber-700 capitalize">
+                    {food.status}
+                  </span>
+                </p>
 
-              <Link
-                to={`/details/${food._id}`}
-                className="mt-5 block bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded transition duration-200 text-center font-semibold"
-              >
-                View Details
-              </Link>
+                <Link
+                  to={`/details/${food._id}`}
+                  className="mt-5 block bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded transition duration-200 text-center font-semibold"
+                >
+                  View Details
+                </Link>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
