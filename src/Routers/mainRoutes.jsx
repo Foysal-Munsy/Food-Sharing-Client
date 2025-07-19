@@ -11,6 +11,7 @@ import axios from "axios";
 import MyFoods from "../pages/MyFoods";
 import RequestedFoods from "../pages/RequestedFoods";
 import Update from "../pages/Update";
+import PrivateRoute from "./PrivateRoute";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const mainRoutes = createBrowserRouter([
       },
       {
         path: "/add-food",
-        element: <AddFoods />,
+        element: (
+          <PrivateRoute>
+            <AddFoods />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/available-foods",
@@ -32,11 +37,19 @@ const mainRoutes = createBrowserRouter([
       },
       {
         path: "/my-foods",
-        element: <MyFoods />,
+        element: (
+          <PrivateRoute>
+            <MyFoods />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/requested-foods",
-        element: <RequestedFoods />,
+        element: (
+          <PrivateRoute>
+            <RequestedFoods />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/details/:foodID",

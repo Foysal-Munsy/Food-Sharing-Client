@@ -1,13 +1,21 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { useNavigate } from "react-router";
 
-const Social = () => {
+const Social = ({ from }) => {
   const { googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleSignIn = () => {
+    googleSignIn().then((res) => {
+      navigate(from, { replace: true });
+      console.log(res);
+    });
+  };
   return (
     <div className=" bg-white shadow py-3 rounded-full flex flex-col items-center">
       <div>
         <img
-        onClick={googleSignIn}
+          onClick={handleSignIn}
           className="w-[64px]"
           src="https://img.icons8.com/?size=96&id=17949&format=png"
           alt=""

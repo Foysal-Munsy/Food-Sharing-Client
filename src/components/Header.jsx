@@ -22,15 +22,15 @@ const Header = () => {
     <nav className="overflow-x-clip bg-amber-50 shadow-md">
       {user && (
         <p className="text-center text-white bg-amber-500 py-2 font-semibold">
-          Welcome Mr. {user.displayName} ❤️‍🔥❤️‍🔥. Now You Can Watch All the
-          Recipies🍉🍉
+          Greeting {user.displayName} ❤️‍🔥❤️‍🔥. Now You Can Watch All the Foods with
+          your moods.
         </p>
       )}
 
       <div className="w-11/12 mx-auto py-5 flex justify-between items-center relative">
         <Link to="/" className="logo">
           <span className="text-2xl font-extrabold text-amber-700 tracking-wide">
-            Foodie 🍳 Template
+            FoodieMoodie 🍳
           </span>
         </Link>
 
