@@ -13,7 +13,7 @@ const Header = () => {
     { name: "Available Foods", path: "/available-foods" },
     { name: "Add Food", path: "/add-food" },
     ...(user?.email ? [{ name: "Manage My Foods", path: "/my-foods" }] : []),
-    // { name: "Manage My Foods", path: "/my-foods" },
+
     { name: "My Food Request", path: "/requested-foods" },
   ];
 
