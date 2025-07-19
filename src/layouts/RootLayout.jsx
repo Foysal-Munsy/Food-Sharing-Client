@@ -6,7 +6,7 @@ const RootLayout = () => {
   return (
     <div>
       <Header></Header>
-      <main className="overflow-x-clip">
+      <main className="overflow-x-clip min-h-screen">
         <Outlet></Outlet>
       </main>
       <Footer></Footer>
