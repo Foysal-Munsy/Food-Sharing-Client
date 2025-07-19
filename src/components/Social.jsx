@@ -12,7 +12,7 @@ const Social = ({ from }) => {
     });
   };
   return (
-    <div className=" bg-white shadow py-3 rounded-full flex flex-col items-center">
+    <div className=" bg-white shadow cursor-pointer py-3 rounded-full flex flex-col items-center">
       <div>
         <img
           onClick={handleSignIn}
@@ -21,7 +21,7 @@ const Social = ({ from }) => {
           alt=""
         />
       </div>
-      <div className="">
+      {/* <div className="">
         <img
           className="w-[64px]"
           src="https://img.icons8.com/?size=96&id=118497&format=png"
@@ -41,7 +41,7 @@ const Social = ({ from }) => {
           src="https://img.icons8.com/?size=128&id=3tC9EQumUAuq&format=png"
           alt=""
         />
-      </div>
+      </div> */}
     </div>
   );
 };
