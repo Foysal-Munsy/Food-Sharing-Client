@@ -7,6 +7,7 @@ const AvailableFoods = () => {
   const [foods, setFoods] = useState([]);
   const [sortedFoods, setSortedFoods] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     axios.get("http://localhost:5001/available-foods").then((res) => {
@@ -19,7 +20,7 @@ const AvailableFoods = () => {
   useEffect(() => {
     const sorted = sortFoods([...foods], sortOrder);
     setSortedFoods(sorted);
-  }, [sortOrder]);
+  }, [sortOrder, foods]);
 
   const sortFoods = (data, order) => {
     return data.sort((a, b) => {
@@ -29,11 +30,26 @@ const AvailableFoods = () => {
     });
   };
 
+  const filteredFoods = sortedFoods.filter((food) =>
+    food.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="py-10 px-4 md:px-10 bg-amber-50 min-h-screen">
-      <h2 className="text-3xl font-extrabold text-amber-800 mb-4 text-center tracking-wide">
+      <h2 className="text-3xl font-extrabold text-amber-800 mb-6 text-center tracking-wide">
         Available Foods
       </h2>
+
+      {/* Search Section */}
+      <div className="max-w-md mx-auto mb-6">
+        <input
+          type="text"
+          placeholder="Search by food name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full px-4 py-2 border border-amber-300 rounded focus:outline-none focus:ring-2 focus:ring-amber-600 bg-white text-amber-800"
+        />
+      </div>
 
       {/* Sorting Section */}
       <div className="mb-8 max-w-xs mx-auto">
@@ -51,13 +67,13 @@ const AvailableFoods = () => {
       </div>
 
       {/* Food Section */}
-      {sortedFoods.length === 0 ? (
+      {filteredFoods.length === 0 ? (
         <p className="text-center text-lg text-amber-600 font-medium">
-          No food available at the moment. Please check back later.
+          No matching food found.
         </p>
       ) : (
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {sortedFoods.map((food) => (
+          {filteredFoods.map((food) => (
             <div
               key={food._id}
               className="bg-white rounded-xl shadow-lg overflow-hidden border border-amber-200 flex flex-col"
