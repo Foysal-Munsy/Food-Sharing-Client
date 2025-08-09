@@ -1,28 +1,26 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import axios from "axios";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/src/hooks/useAxiosSecure";
+import axiosPublic from "../hooks/axiosPublic";
 
 export default function MyFoods() {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!user) return;
-    axios
-      .get("https://food-sharing-server-seven.vercel.app/my-foods", {
-        headers: {
-          Authorization: `Bearer ${user.accessToken}`,
-        },
-      })
+    axiosSecure
+      .get("/my-foods")
       .then((res) => setFoods(res.data))
       .catch((err) => {
         console.error("Error fetching foods:", err);
       })
       .finally(() => setLoading(false));
-  }, [user]);
+  }, [user, axiosSecure]);
 
   const handleDelete = async (id) => {
     const result = await Swal.fire({
@@ -37,9 +35,7 @@ export default function MyFoods() {
 
     if (result.isConfirmed) {
       try {
-        const res = await axios.delete(
-          `https://food-sharing-server-seven.vercel.app/foods/${id}`
-        );
+        const res = await axiosPublic.delete(`/foods/${id}`);
         if (res.data.deletedCount > 0) {
           setFoods((prev) => prev.filter((food) => food._id !== id));
           Swal.fire("Deleted!", "Food item has been deleted.", "success");

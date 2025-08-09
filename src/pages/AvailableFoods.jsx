@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { format } from "date-fns";
+import axiosPublic from "../hooks/axiosPublic";
 
 const AvailableFoods = () => {
   const [foods, setFoods] = useState([]);
@@ -11,14 +11,12 @@ const AvailableFoods = () => {
   const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(true); // Layout toggle
 
   useEffect(() => {
-    axios
-      .get("https://food-sharing-server-seven.vercel.app/available-foods")
-      .then((res) => {
-        const sorted = sortFoods(res.data, sortOrder);
-        setFoods(res.data);
-        setSortedFoods(sorted);
-      });
-  }, []);
+    axiosPublic.get("/available-foods").then((res) => {
+      const sorted = sortFoods(res.data, sortOrder);
+      setFoods(res.data);
+      setSortedFoods(sorted);
+    });
+  }, [sortOrder]);
 
   useEffect(() => {
     const sorted = sortFoods([...foods], sortOrder);

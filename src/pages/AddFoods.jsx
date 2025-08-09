@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
+import axiosPublic from "../hooks/axiosPublic";
 
 const AddFoods = () => {
   const { user } = useContext(AuthContext);
@@ -34,10 +34,7 @@ const AddFoods = () => {
     };
 
     try {
-      const res = await axios.post(
-        "https://food-sharing-server-seven.vercel.app/add-food",
-        data
-      );
+      const res = await axiosPublic.post("/add-food", data);
       if (res.data.insertedId || res.data.acknowledged) {
         Swal.fire({
           title: "Success!",

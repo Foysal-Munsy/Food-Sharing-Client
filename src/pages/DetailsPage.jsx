@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useLoaderData } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/src/hooks/useAxiosSecure";
 
 const DetailsPage = () => {
   const {
@@ -21,21 +21,14 @@ const DetailsPage = () => {
   } = useLoaderData();
 
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const [userNotes, setUserNotes] = useState(notes || "");
 
   const currentDate = new Date().toLocaleDateString();
 
   const handleRequest = () => {
-    axios
-      .patch(
-        `https://food-sharing-server-seven.vercel.app/request/${_id}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${user.accessToken}`,
-          },
-        }
-      )
+    axiosSecure
+      .patch(`/request/${_id}`, {})
       .then((res) => {
         if (res.data.modifiedCount > 0 || res.data.success) {
           Swal.fire({

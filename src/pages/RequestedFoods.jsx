@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import axios from "axios";
+import useAxiosSecure from "../hooks/src/hooks/useAxiosSecure";
 
 export default function RequestedFoods() {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
+
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -11,19 +13,15 @@ export default function RequestedFoods() {
     if (!user) return;
 
     setLoading(true);
-    axios
-      .get("https://food-sharing-server-seven.vercel.app/requested-foods", {
-        headers: {
-          Authorization: `Bearer ${user.accessToken}`,
-        },
-      })
+    axiosSecure
+      .get("/requested-foods")
       .then((res) => setFoods(res.data))
       .catch((err) => {
         console.error("Failed to fetch requested foods:", err);
         setFoods([]);
       })
       .finally(() => setLoading(false));
-  }, [user]);
+  }, [user, axiosSecure]);
 
   if (loading) {
     return (

@@ -40,10 +40,10 @@ const Banner = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 text-sm sm:text-base">
+            <button className="bg-orange-500 cursor-pointer hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200 text-sm sm:text-base">
               Order Now
             </button>
-            <button className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 text-sm sm:text-base">
+            <button className="border-2 cursor-pointer border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-200 text-sm sm:text-base">
               Explore Recipes
             </button>
           </div>

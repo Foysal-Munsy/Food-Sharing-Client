@@ -1,13 +1,13 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
+import axiosPublic from "../hooks/axiosPublic";
 
 const FeaturedFood = () => {
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://food-sharing-server-seven.vercel.app/featured-foods")
+    axiosPublic
+      .get("/featured-foods")
       .then((res) => setFoods(res.data))
       .catch((err) => console.error("Failed to fetch featured foods", err));
   }, []);

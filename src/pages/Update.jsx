@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router";
-import axios from "axios";
+import axiosPublic from "../hooks/axiosPublic";
+import Swal from "sweetalert2";
 
 export default function Update() {
   const {
@@ -34,12 +35,9 @@ export default function Update() {
     };
 
     try {
-      const res = await axios.put(
-        `https://food-sharing-server-seven.vercel.app/update/${_id}`,
-        updatedFood
-      );
+      const res = await axiosPublic.put(`/update/${_id}`, updatedFood);
       console.log("Update response: ", res.data);
-      alert("Food item updated successfully!");
+      Swal.fire("Food item updated successfully!");
     } catch (err) {
       console.error("Error updating food item:", err);
       alert("Failed to update food item.");
