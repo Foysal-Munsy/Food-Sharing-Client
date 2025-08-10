@@ -8,7 +8,7 @@ import InsidePageLoading from "../components/InsidePageLoading";
 const AvailableFoods = () => {
   // pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(2);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
 
   // total count state for server-side pagination
   const [totalCount, setTotalCount] = useState(0);
