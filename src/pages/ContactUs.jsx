@@ -139,13 +139,13 @@ const ContactUs = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-orange-50">
+    <div className="min-h-screen bg-orange-50 dark:bg-gray-900">
       {/* Header Section */}
-      <div className="bg-amber-600 text-white py-16">
+      <div className="bg-amber-600 text-white py-16 dark:bg-amber-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl font-bold mb-4">Contact Us</h1>
-            <p className="text-xl text-amber-100 max-w-2xl mx-auto">
+            <p className="text-xl text-amber-100 max-w-2xl mx-auto dark:text-amber-200">
               We're here to help! Reach out to the FoodieMoodie team with any
               questions or feedback
             </p>
@@ -159,18 +159,20 @@ const ContactUs = () => {
           {contactMethods.map((method, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow"
+              className="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow dark:bg-gray-800"
             >
               <div className="w-12 h-12 bg-orange-500 rounded-lg mx-auto mb-4 flex items-center justify-center text-white">
                 {method.icon}
               </div>
-              <h3 className="text-xl font-bold text-amber-700 mb-2">
+              <h3 className="text-xl font-bold text-amber-700 mb-2 dark:text-amber-300">
                 {method.title}
               </h3>
-              <p className="text-amber-600 mb-3">{method.description}</p>
+              <p className="text-amber-600 mb-3 dark:text-amber-400">
+                {method.description}
+              </p>
               <a
                 href={method.action}
-                className="text-orange-600 font-semibold hover:text-orange-700 cursor-pointer"
+                className="text-orange-600 font-semibold hover:text-orange-700 cursor-pointer dark:text-orange-400 dark:hover:text-orange-300"
               >
                 {method.contact}
               </a>
@@ -180,13 +182,13 @@ const ContactUs = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-amber-700 mb-6">
+          <div className="bg-white rounded-lg shadow-lg p-8 dark:bg-gray-800">
+            <h2 className="text-3xl font-bold text-amber-700 mb-6 dark:text-amber-300">
               Send us a Message
             </h2>
             <div className="space-y-6">
               <div>
-                <label className="block text-amber-700 font-semibold mb-2">
+                <label className="block text-amber-700 font-semibold mb-2 dark:text-amber-300">
                   Full Name
                 </label>
                 <input
@@ -194,13 +196,13 @@ const ContactUs = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 text-amber-700"
+                  className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 text-amber-700 dark:border-gray-600 dark:bg-gray-900 dark:text-amber-300 dark:focus:border-orange-400"
                   placeholder="Enter your full name"
                 />
               </div>
 
               <div>
-                <label className="block text-amber-700 font-semibold mb-2">
+                <label className="block text-amber-700 font-semibold mb-2 dark:text-amber-300">
                   Email Address
                 </label>
                 <input
@@ -208,20 +210,20 @@ const ContactUs = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 text-amber-700"
+                  className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 text-amber-700 dark:border-gray-600 dark:bg-gray-900 dark:text-amber-300 dark:focus:border-orange-400"
                   placeholder="Enter your email address"
                 />
               </div>
 
               <div>
-                <label className="block text-amber-700 font-semibold mb-2">
+                <label className="block text-amber-700 font-semibold mb-2 dark:text-amber-300">
                   Subject
                 </label>
                 <select
                   name="subject"
                   value={formData.subject}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 text-amber-700 cursor-pointer"
+                  className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 text-amber-700 cursor-pointer dark:border-gray-600 dark:bg-gray-900 dark:text-amber-300 dark:focus:border-orange-400"
                 >
                   <option value="">Select a subject</option>
                   <option value="general">General Inquiry</option>
@@ -233,7 +235,7 @@ const ContactUs = () => {
               </div>
 
               <div>
-                <label className="block text-amber-700 font-semibold mb-2">
+                <label className="block text-amber-700 font-semibold mb-2 dark:text-amber-300">
                   Message
                 </label>
                 <textarea
@@ -241,7 +243,7 @@ const ContactUs = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows="6"
-                  className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 text-amber-700 resize-vertical"
+                  className="w-full px-4 py-3 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-500 text-amber-700 resize-vertical dark:border-gray-600 dark:bg-gray-900 dark:text-amber-300 dark:focus:border-orange-400"
                   placeholder="Write your message here..."
                 ></textarea>
               </div>
@@ -257,25 +259,30 @@ const ContactUs = () => {
 
           {/* FAQ Section */}
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-amber-700 mb-6">
+            <h2 className="text-3xl font-bold text-amber-700 mb-6 dark:text-amber-300">
               Frequently Asked Questions
             </h2>
 
             {faqItems.map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg p-6">
-                <h3 className="text-xl font-bold text-amber-700 mb-3">
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-lg p-6 dark:bg-gray-800"
+              >
+                <h3 className="text-xl font-bold text-amber-700 mb-3 dark:text-amber-300">
                   {faq.question}
                 </h3>
-                <p className="text-amber-600 leading-relaxed">{faq.answer}</p>
+                <p className="text-amber-600 leading-relaxed dark:text-amber-400">
+                  {faq.answer}
+                </p>
               </div>
             ))}
 
             {/* Additional Help */}
-            <div className="bg-amber-100 rounded-lg p-6 border border-amber-200">
-              <h3 className="text-xl font-bold text-amber-700 mb-3">
+            <div className="bg-amber-100 rounded-lg p-6 border border-amber-200 dark:bg-amber-900 dark:border-amber-700">
+              <h3 className="text-xl font-bold text-amber-700 mb-3 dark:text-amber-300">
                 Need More Help?
               </h3>
-              <p className="text-amber-600 mb-4">
+              <p className="text-amber-600 mb-4 dark:text-amber-400">
                 Can't find what you're looking for? Our support team is ready to
                 assist you.
               </p>
@@ -289,28 +296,34 @@ const ContactUs = () => {
 
       {/* Response Time Notice */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="bg-orange-100 border border-orange-200 rounded-lg p-8 text-center">
-          <h3 className="text-2xl font-bold text-amber-700 mb-4">
+        <div className="bg-orange-100 border border-orange-200 rounded-lg p-8 text-center dark:bg-gray-800 dark:border-gray-700">
+          <h3 className="text-2xl font-bold text-amber-700 mb-4 dark:text-amber-300">
             Our Response Time
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <div className="text-3xl font-bold text-orange-600 mb-2">
+              <div className="text-3xl font-bold text-orange-600 mb-2 dark:text-orange-400">
                 24 hours
               </div>
-              <p className="text-amber-600">Email inquiries</p>
+              <p className="text-amber-600 dark:text-amber-400">
+                Email inquiries
+              </p>
             </div>
             <div>
-              <div className="text-3xl font-bold text-orange-600 mb-2">
+              <div className="text-3xl font-bold text-orange-600 mb-2 dark:text-orange-400">
                 Instant
               </div>
-              <p className="text-amber-600">Live chat support</p>
+              <p className="text-amber-600 dark:text-amber-400">
+                Live chat support
+              </p>
             </div>
             <div>
-              <div className="text-3xl font-bold text-orange-600 mb-2">
+              <div className="text-3xl font-bold text-orange-600 mb-2 dark:text-orange-400">
                 Same day
               </div>
-              <p className="text-amber-600">Phone support</p>
+              <p className="text-amber-600 dark:text-amber-400">
+                Phone support
+              </p>
             </div>
           </div>
         </div>
