@@ -23,7 +23,7 @@ const Footer = () => {
               Terms of Service
             </a>
             <a
-              href="#"
+              href="/contactUs"
               className="text-sm sm:text-base text-white/90 hover:text-white hover:underline underline-offset-4 transition-all duration-200 font-medium"
             >
               Contact Us
