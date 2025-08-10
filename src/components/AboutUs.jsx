@@ -91,10 +91,10 @@ const AboutUs = () => {
   };
 
   return (
-    <section className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-16 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-16 lg:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-amber-200/30 to-transparent rounded-full blur-3xl -translate-x-36 -translate-y-36"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-orange-200/30 to-transparent rounded-full blur-3xl translate-x-48 translate-y-48"></div>
+      <div className="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-amber-200/30 dark:from-amber-600/20 to-transparent rounded-full blur-3xl -translate-x-36 -translate-y-36"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-orange-200/30 dark:from-orange-600/20 to-transparent rounded-full blur-3xl translate-x-48 translate-y-48"></div>
 
       <motion.div
         className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
@@ -106,7 +106,7 @@ const AboutUs = () => {
         {/* Section Header */}
         <motion.div className="text-center mb-16" variants={headerVariants}>
           <motion.h2
-            className="text-4xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 mb-6 tracking-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 dark:from-amber-400 dark:via-orange-400 dark:to-red-400 mb-6 tracking-tight"
             whileHover={{
               scale: 1.05,
               textShadow: "0px 0px 8px rgba(245, 158, 11, 0.5)",
@@ -117,7 +117,7 @@ const AboutUs = () => {
           </motion.h2>
 
           <motion.p
-            className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: {
@@ -131,7 +131,7 @@ const AboutUs = () => {
           </motion.p>
 
           <motion.div
-            className="mt-8 w-32 h-1 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 mx-auto rounded-full"
+            className="mt-8 w-32 h-1 bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 dark:from-amber-500 dark:via-orange-400 dark:to-red-400 mx-auto rounded-full"
             variants={{
               hidden: { scaleX: 0 },
               visible: {
@@ -164,9 +164,9 @@ const AboutUs = () => {
               ></motion.div>
 
               {/* Main Card */}
-              <div className="relative bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl border border-gray-100 transition-all duration-500 overflow-hidden backdrop-blur-sm">
+              <div className="relative bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-2xl border border-gray-100 dark:border-gray-700 transition-all duration-500 overflow-hidden backdrop-blur-sm">
                 {/* Background Pattern */}
-                <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
+                <div className="absolute top-0 right-0 w-32 h-32 opacity-5 dark:opacity-10">
                   <div
                     className={`w-full h-full bg-gradient-to-br ${tip.color} rounded-full transform rotate-12 scale-150`}
                   ></div>
@@ -199,7 +199,7 @@ const AboutUs = () => {
 
                 {/* Content */}
                 <motion.h3
-                  className="text-xl sm:text-2xl font-bold mb-4 text-gray-800 group-hover:text-gray-900 transition-colors duration-300 text-center"
+                  className="text-xl sm:text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 group-hover:text-gray-900 dark:group-hover:text-gray-50 transition-colors duration-300 text-center"
                   variants={{
                     hidden: { opacity: 0, x: -20 },
                     visible: {
@@ -213,7 +213,7 @@ const AboutUs = () => {
                 </motion.h3>
 
                 <motion.p
-                  className="text-gray-600 leading-relaxed text-center group-hover:text-gray-700 transition-colors duration-300"
+                  className="text-gray-600 dark:text-gray-300 leading-relaxed text-center group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300"
                   variants={{
                     hidden: { opacity: 0, x: 20 },
                     visible: {
@@ -233,11 +233,11 @@ const AboutUs = () => {
                   whileInView={{ y: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <span className="text-sm font-medium text-gray-500">
+                  <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                     Tap for more tips
                   </span>
                   <motion.svg
-                    className="w-4 h-4 ml-2 text-gray-400"
+                    className="w-4 h-4 ml-2 text-gray-400 dark:text-gray-500"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -270,7 +270,7 @@ const AboutUs = () => {
           }}
         >
           <motion.button
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-full shadow-lg hover:shadow-xl text-lg group"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 dark:from-amber-600 dark:to-orange-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl text-lg group"
             whileHover={{
               scale: 1.05,
               boxShadow:

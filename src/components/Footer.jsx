@@ -1,10 +1,10 @@
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-amber-600 to-orange-600 text-white py-8 lg:py-10">
+    <footer className="bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-700 dark:to-orange-700 text-white py-8 lg:py-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
           {/* Copyright */}
-          <p className="text-sm sm:text-base text-center md:text-left text-white/90 font-medium">
+          <p className="text-sm sm:text-base text-center md:text-left text-white/90 dark:text-white/80 font-medium">
             &copy; {new Date().getFullYear()} FoodieMoodie. All rights reserved.
           </p>
 
@@ -12,19 +12,19 @@ const Footer = () => {
           <div className="flex flex-wrap justify-center md:justify-end items-center gap-6 lg:gap-8">
             <a
               href="/available-foods"
-              className="text-sm sm:text-base text-white/90 hover:text-white hover:underline underline-offset-4 transition-all duration-200 font-medium"
+              className="text-sm sm:text-base text-white/90 dark:text-white/80 hover:text-white hover:underline underline-offset-4 transition-all duration-200 font-medium"
             >
               Available Foods
             </a>
             <a
               href="/terms-of-service"
-              className="text-sm sm:text-base text-white/90 hover:text-white hover:underline underline-offset-4 transition-all duration-200 font-medium"
+              className="text-sm sm:text-base text-white/90 dark:text-white/80 hover:text-white hover:underline underline-offset-4 transition-all duration-200 font-medium"
             >
               Terms of Service
             </a>
             <a
               href="/contactUs"
-              className="text-sm sm:text-base text-white/90 hover:text-white hover:underline underline-offset-4 transition-all duration-200 font-medium"
+              className="text-sm sm:text-base text-white/90 dark:text-white/80 hover:text-white hover:underline underline-offset-4 transition-all duration-200 font-medium"
             >
               Contact Us
             </a>
