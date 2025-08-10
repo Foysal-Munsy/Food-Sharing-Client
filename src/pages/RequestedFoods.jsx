@@ -30,11 +30,11 @@ export default function RequestedFoods() {
 
   if (foods.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100 dark:from-gray-900 dark:to-gray-800 px-4">
         <div className="text-center max-w-md">
-          <div className="w-24 h-24 bg-amber-200 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-24 h-24 bg-amber-200 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg
-              className="w-12 h-12 text-amber-600"
+              className="w-12 h-12 text-amber-600 dark:text-amber-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -47,10 +47,10 @@ export default function RequestedFoods() {
               />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-amber-800 mb-4">
+          <h2 className="text-2xl font-bold text-amber-800 dark:text-amber-300 mb-4">
             No Requested Foods
           </h2>
-          <p className="text-amber-700">
+          <p className="text-amber-700 dark:text-amber-400">
             You haven't requested any food items yet. Browse available foods to
             make requests!
           </p>
@@ -60,13 +60,13 @@ export default function RequestedFoods() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto px-4 sm:px-6 lg:p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-amber-800 mb-2">
+          <h1 className="text-3xl sm:text-4xl font-bold text-amber-800 dark:text-amber-300 mb-2">
             My Requested Foods
           </h1>
-          <p className="text-amber-700">
+          <p className="text-amber-700 dark:text-amber-400">
             Track your food requests and pickup details
           </p>
         </div>
@@ -76,21 +76,21 @@ export default function RequestedFoods() {
           {foods.map((food) => (
             <div
               key={food._id}
-              className="bg-white rounded-lg shadow-md border border-amber-200 p-4"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-amber-200 dark:border-gray-700 p-4"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-lg text-amber-900">
+                  <h3 className="font-bold text-lg text-amber-900 dark:text-amber-300">
                     {food.donorName || food.donorEmail || "Unknown Donor"}
                   </h3>
-                  <span className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-300 px-3 py-1 rounded-full text-sm font-medium">
                     Requested
                   </span>
                 </div>
-                <div className="space-y-2 text-sm text-gray-600">
+                <div className="space-y-2 text-sm text-gray-600 dark:text-gray-300">
                   <div className="flex items-center gap-2">
                     <svg
-                      className="w-4 h-4 text-amber-600"
+                      className="w-4 h-4 text-amber-600 dark:text-amber-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -113,7 +113,7 @@ export default function RequestedFoods() {
                   </div>
                   <div className="flex items-center gap-2">
                     <svg
-                      className="w-4 h-4 text-amber-600"
+                      className="w-4 h-4 text-amber-600 dark:text-amber-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -130,7 +130,7 @@ export default function RequestedFoods() {
                   </div>
                   <div className="flex items-center gap-2">
                     <svg
-                      className="w-4 h-4 text-amber-600"
+                      className="w-4 h-4 text-amber-600 dark:text-amber-400"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -154,39 +154,38 @@ export default function RequestedFoods() {
         </div>
 
         {/* Desktop Table View */}
-        <div className="hidden lg:block bg-white rounded-lg shadow-lg border border-amber-200 overflow-hidden">
+        <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-amber-200 dark:border-gray-700 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gradient-to-r from-amber-100 to-amber-200">
+              <thead className="bg-gradient-to-r from-amber-100 to-amber-200 dark:from-gray-700 dark:to-gray-600">
                 <tr>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Donor Information
-                  </th>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Pickup Location
-                  </th>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Expiry Date
-                  </th>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Request Date
-                  </th>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Status
-                  </th>
+                  {[
+                    "Donor Information",
+                    "Pickup Location",
+                    "Expiry Date",
+                    "Request Date",
+                    "Status",
+                  ].map((head) => (
+                    <th
+                      key={head}
+                      className="py-4 px-6 text-left text-sm font-bold text-amber-900 dark:text-amber-300 uppercase tracking-wider"
+                    >
+                      {head}
+                    </th>
+                  ))}
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-amber-100">
+              <tbody className="bg-white dark:bg-gray-800 divide-y divide-amber-100 dark:divide-gray-700">
                 {foods.map((food) => (
                   <tr
                     key={food._id}
-                    className="hover:bg-amber-50 transition-colors duration-200"
+                    className="hover:bg-amber-50 dark:hover:bg-gray-700 transition-colors duration-200"
                   >
                     <td className="py-4 px-6">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-amber-200 rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-amber-200 dark:bg-gray-600 rounded-full flex items-center justify-center">
                           <svg
-                            className="w-5 h-5 text-amber-700"
+                            className="w-5 h-5 text-amber-700 dark:text-amber-300"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -200,10 +199,10 @@ export default function RequestedFoods() {
                           </svg>
                         </div>
                         <div>
-                          <p className="font-semibold text-amber-900">
+                          <p className="font-semibold text-amber-900 dark:text-amber-300">
                             {food.donorName || "Anonymous Donor"}
                           </p>
-                          <p className="text-sm text-gray-500">
+                          <p className="text-sm text-gray-500 dark:text-gray-400">
                             {food.donorEmail || "No email provided"}
                           </p>
                         </div>
@@ -212,7 +211,7 @@ export default function RequestedFoods() {
                     <td className="py-4 px-6">
                       <div className="flex items-center gap-2">
                         <svg
-                          className="w-4 h-4 text-amber-600"
+                          className="w-4 h-4 text-amber-600 dark:text-amber-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -230,7 +229,7 @@ export default function RequestedFoods() {
                             d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-gray-700 dark:text-gray-300">
                           {food.location || "Not specified"}
                         </span>
                       </div>
@@ -238,7 +237,7 @@ export default function RequestedFoods() {
                     <td className="py-4 px-6">
                       <div className="flex items-center gap-2">
                         <svg
-                          className="w-4 h-4 text-amber-600"
+                          className="w-4 h-4 text-amber-600 dark:text-amber-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -250,7 +249,7 @@ export default function RequestedFoods() {
                             d="M8 7V3a1 1 0 011-1h6a1 1 0 011 1v4M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2h-2M8 7v4a1 1 0 001 1h6a1 1 0 001-1V7"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-gray-700 dark:text-gray-300">
                           {food.date || "Not specified"}
                         </span>
                       </div>
@@ -258,7 +257,7 @@ export default function RequestedFoods() {
                     <td className="py-4 px-6">
                       <div className="flex items-center gap-2">
                         <svg
-                          className="w-4 h-4 text-amber-600"
+                          className="w-4 h-4 text-amber-600 dark:text-amber-400"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -270,7 +269,7 @@ export default function RequestedFoods() {
                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
                         </svg>
-                        <span className="text-gray-700">
+                        <span className="text-gray-700 dark:text-gray-300">
                           {food.requestedAt
                             ? new Date(food.requestedAt).toLocaleDateString()
                             : "Not specified"}
@@ -278,7 +277,7 @@ export default function RequestedFoods() {
                       </div>
                     </td>
                     <td className="py-4 px-6">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-amber-100 text-amber-800 border border-amber-200">
+                      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-gray-600">
                         <div className="w-2 h-2 bg-amber-500 rounded-full mr-2"></div>
                         Requested
                       </span>
