@@ -30,7 +30,6 @@ const AvailableFoods = () => {
         setFoods(res.data.foods);
         setSortedFoods(sorted);
         setTotalCount(res.data.total);
-        // setLoading(false);
       })
       .finally(() => setLoading(false));
   }, [sortOrder, currentPage, itemsPerPage]);
@@ -66,21 +65,23 @@ const AvailableFoods = () => {
     return <InsidePageLoading word={"Available foods are loading...."} />;
 
   return (
-    <div className="py-16 px-4 md:px-10 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 min-h-screen ">
+    <div className="py-16 px-4 md:px-10 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 min-h-screen">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 mb-4 tracking-tight">
+          <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 dark:from-amber-400 dark:via-orange-400 dark:to-yellow-400 mb-4 tracking-tight">
             Available Foods
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-amber-500 to-orange-500 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-amber-500 to-orange-500 dark:from-amber-700 dark:to-orange-700 mx-auto rounded-full"></div>
         </div>
 
         {/* Controls Section */}
-        <div className="bg-white bg-opacity-80 rounded-3xl p-6 mb-12 border border-gray-200 shadow-md">
+        <div className="bg-white bg-opacity-80 dark:bg-gray-800 rounded-3xl p-6 mb-12 border border-gray-200 dark:border-gray-700 shadow-md dark:shadow-lg">
           <div className="flex flex-col lg:flex-row items-center gap-6 justify-between">
             {/* Layout Toggle */}
             <div className="flex items-center gap-4">
-              <span className="text-amber-800 font-semibold">Layout:</span>
+              <span className="text-amber-800 dark:text-amber-400 font-semibold">
+                Layout:
+              </span>
               <button
                 onClick={() => setIsThreeColumnLayout(!isThreeColumnLayout)}
                 className="relative cursor-pointer inline-flex items-center bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white px-6 py-3 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
@@ -107,7 +108,7 @@ const AvailableFoods = () => {
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <svg
-                    className="w-5 h-5 text-amber-500"
+                    className="w-5 h-5 text-amber-500 dark:text-amber-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -125,20 +126,20 @@ const AvailableFoods = () => {
                   placeholder="Search by food name..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-amber-200/50 focus:border-amber-500 bg-white/90 text-amber-900 placeholder-amber-400 font-medium transition-all duration-300"
+                  className="w-full pl-10 pr-4 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-amber-200/50 focus:border-amber-500 bg-white/90 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-amber-400/50 dark:focus:border-amber-400 text-amber-900 dark:text-amber-300 placeholder-amber-400 dark:placeholder-amber-300 font-medium transition-all duration-300"
                 />
               </div>
             </div>
 
             {/* Sorting */}
             <div className="flex items-center gap-4">
-              <label className="text-amber-800 font-semibold whitespace-nowrap">
+              <label className="text-amber-800 dark:text-amber-400 font-semibold whitespace-nowrap">
                 Sort by Date:
               </label>
               <select
                 value={sortOrder}
                 onChange={(e) => setSortOrder(e.target.value)}
-                className="px-4 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-amber-200/50 focus:border-amber-500 bg-white/90 text-amber-900 font-medium transition-all duration-300 cursor-pointer"
+                className="px-4 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-amber-200/50 focus:border-amber-500 bg-white/90 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-amber-400/50 dark:focus:border-amber-400 text-amber-900 dark:text-amber-300 font-medium transition-all duration-300 cursor-pointer"
               >
                 <option value="asc">Oldest First</option>
                 <option value="desc">Newest First</option>
@@ -150,8 +151,8 @@ const AvailableFoods = () => {
         {/* Food Section */}
         {filteredFoods.length === 0 ? (
           <div className="text-center mt-32">
-            <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-12 max-w-md mx-auto border border-amber-200/50">
-              <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-400 rounded-full mx-auto mb-6 flex items-center justify-center">
+            <div className="bg-white/80 dark:bg-gray-800 backdrop-blur-sm rounded-3xl shadow-2xl p-12 max-w-md mx-auto border border-amber-200/50 dark:border-amber-700/50">
+              <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-400 dark:from-amber-700 dark:to-orange-700 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <svg
                   className="w-10 h-10 text-white"
                   fill="none"
@@ -166,10 +167,10 @@ const AvailableFoods = () => {
                   />
                 </svg>
               </div>
-              <p className="text-amber-800 text-2xl font-bold mb-2">
+              <p className="text-amber-800 dark:text-amber-300 text-2xl font-bold mb-2">
                 No Foods Found
               </p>
-              <p className="text-amber-600">
+              <p className="text-amber-600 dark:text-amber-400">
                 Try adjusting your search or filters.
               </p>
             </div>
@@ -183,7 +184,7 @@ const AvailableFoods = () => {
             {filteredFoods.map((food) => (
               <div
                 key={food._id}
-                className="group bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden border border-white/50 flex flex-col transform hover:-translate-y-2 transition-all duration-300 hover:scale-105"
+                className="group bg-white/90 dark:bg-gray-800 backdrop-blur-sm rounded-2xl shadow-xl dark:shadow-2xl hover:shadow-2xl dark:hover:shadow-amber-700/60 overflow-hidden border border-white/50 dark:border-gray-700 flex flex-col transform hover:-translate-y-2 transition-all duration-300 hover:scale-105"
               >
                 <div className="relative overflow-hidden">
                   <img
@@ -193,36 +194,36 @@ const AvailableFoods = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute top-4 right-4">
-                    <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg capitalize">
+                    <span className="bg-amber-500 dark:bg-amber-700 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg capitalize">
                       {food.status}
                     </span>
                   </div>
                 </div>
 
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-amber-900 mb-4 group-hover:text-amber-700 transition-colors duration-200">
+                  <h3 className="text-2xl font-bold text-amber-900 dark:text-amber-300 mb-4 group-hover:text-amber-700 dark:group-hover:text-amber-400 transition-colors duration-200">
                     {food.name}
                   </h3>
 
                   <div className="space-y-3 mb-6">
-                    <div className="flex items-center text-amber-700">
-                      <div className="w-2 h-2 bg-amber-500 rounded-full mr-3"></div>
+                    <div className="flex items-center text-amber-700 dark:text-amber-400">
+                      <div className="w-2 h-2 bg-amber-500 dark:bg-amber-700 rounded-full mr-3"></div>
                       <span className="font-semibold text-sm">Quantity:</span>
-                      <span className="ml-2 text-amber-800 font-medium">
+                      <span className="ml-2 text-amber-800 dark:text-amber-300 font-medium">
                         {food.quantity}
                       </span>
                     </div>
-                    <div className="flex items-center text-amber-700">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
+                    <div className="flex items-center text-amber-700 dark:text-amber-400">
+                      <div className="w-2 h-2 bg-orange-500 dark:bg-orange-700 rounded-full mr-3"></div>
                       <span className="font-semibold text-sm">Location:</span>
-                      <span className="ml-2 text-amber-800 font-medium truncate">
+                      <span className="ml-2 text-amber-800 dark:text-amber-300 font-medium truncate">
                         {food.location}
                       </span>
                     </div>
-                    <div className="flex items-center text-amber-700">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                    <div className="flex items-center text-amber-700 dark:text-amber-400">
+                      <div className="w-2 h-2 bg-red-500 dark:bg-red-700 rounded-full mr-3"></div>
                       <span className="font-semibold text-sm">Expires:</span>
-                      <span className="ml-2 text-amber-800 font-medium">
+                      <span className="ml-2 text-amber-800 dark:text-amber-300 font-medium">
                         {format(new Date(food.date), "yyyy-MM-dd")}
                       </span>
                     </div>
@@ -267,13 +268,13 @@ const AvailableFoods = () => {
 
               {/* Items Per Page Dropdown */}
               <div className="flex items-center gap-3">
-                <label className="text-amber-800 font-medium">
+                <label className="text-amber-800 dark:text-amber-400 font-medium">
                   Items per page:
                 </label>
                 <select
                   value={itemsPerPage}
                   onChange={handleItemsPerPage}
-                  className="px-4 py-2 border-2 border-amber-200 rounded-xl bg-white/90 text-amber-900 font-medium focus:outline-none focus:ring-4 focus:ring-amber-200/50 focus:border-amber-500 transition-all duration-300 cursor-pointer hover:shadow-md"
+                  className="px-4 py-2 border-2 border-amber-200 rounded-xl bg-white/90 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-amber-400/50 dark:focus:border-amber-400 text-amber-900 dark:text-amber-300 font-medium focus:outline-none focus:ring-4 focus:ring-amber-200/50 focus:border-amber-500 transition-all duration-300 cursor-pointer hover:shadow-md"
                 >
                   <option value="3">3</option>
                   <option value="6">6</option>
