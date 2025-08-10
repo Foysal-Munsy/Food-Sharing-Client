@@ -110,6 +110,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden flex items-center space-x-3">
+            <DarkModeToggle />
             {user && user.photoURL && (
               <div className="relative">
                 <img

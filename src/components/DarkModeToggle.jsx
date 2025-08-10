@@ -23,9 +23,14 @@ export default function DarkModeToggle() {
     <div>
       <button
         onClick={() => setIsDarkMode((prev) => !prev)}
-        className="btn bg-gray-200 text-black dark:bg-gray-800 dark:text-white transition-colors duration-300"
+        className="p-2 cursor-pointer rounded-lg bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200"
+        aria-label="Toggle theme"
       >
-        {isDarkMode ? <Sun /> : <Moon />}
+        {isDarkMode ? (
+          <Sun className="w-5 h-5" />
+        ) : (
+          <Moon className="w-5 h-5" />
+        )}
       </button>
     </div>
   );
