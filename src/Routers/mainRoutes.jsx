@@ -12,6 +12,7 @@ import MyFoods from "../pages/MyFoods";
 import RequestedFoods from "../pages/RequestedFoods";
 import Update from "../pages/Update";
 import PrivateRoute from "./PrivateRoute";
+import TermsOfService from "../pages/TermsOfService";
 
 const mainRoutes = createBrowserRouter([
   {
@@ -83,7 +84,10 @@ const mainRoutes = createBrowserRouter([
         path: "registration",
         element: <Register></Register>,
       },
-      {},
+      {
+        path: "terms-of-service",
+        element: <TermsOfService></TermsOfService>,
+      },
     ],
   },
 ]);

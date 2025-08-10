@@ -11,13 +11,13 @@ const Footer = () => {
           {/* Links */}
           <div className="flex flex-wrap justify-center md:justify-end items-center gap-6 lg:gap-8">
             <a
-              href="#"
+              href="/available-foods"
               className="text-sm sm:text-base text-white/90 hover:text-white hover:underline underline-offset-4 transition-all duration-200 font-medium"
             >
-              Privacy Policy
+              Available Foods
             </a>
             <a
-              href="#"
+              href="/terms-of-service"
               className="text-sm sm:text-base text-white/90 hover:text-white hover:underline underline-offset-4 transition-all duration-200 font-medium"
             >
               Terms of Service
