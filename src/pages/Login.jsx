@@ -20,7 +20,6 @@ const Login = () => {
     const email = form.email.value;
     const pass = form.pass.value;
 
-    //loading
     Swal.fire({
       title: "Logging in...",
       allowOutsideClick: false,
@@ -49,10 +48,10 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-[url(/bg.png)] bg-contain">
-      <div className="bg-white bg-opacity-90 min-h-screen">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="title mt-5">
+    <div className="bg-[url(/bg.png)] bg-contain dark:bg-none dark:bg-gray-900">
+      <div className="bg-white dark:bg-gray-800 bg-opacity-90 min-h-screen">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="title dark:text-gray-100">
             <Title>Login Now</Title>
           </div>
 
@@ -61,13 +60,13 @@ const Login = () => {
             <div className="login-form flex-1 w-full max-w-md">
               <form
                 onSubmit={handleSubmit}
-                className="bg-white p-5 flex flex-col gap-8 backdrop-blur-sm bg-opacity-10 shadow-lg rounded-lg"
+                className="bg-white dark:bg-gray-800 dark:text-gray-100 p-5 flex flex-col gap-8 backdrop-blur-sm bg-opacity-10 shadow-lg rounded-lg"
               >
                 {/* Email */}
                 <div className="flex items-center">
-                  <BiEnvelope className="text-3xl text-slate-500" />
+                  <BiEnvelope className="text-3xl text-slate-500 dark:text-slate-300" />
                   <input
-                    className="flex-1 border-b-2 p-2 bg-transparent outline-none focus:border-orange-400 transition-all duration-200"
+                    className="flex-1 border-b-2 p-2 bg-transparent outline-none focus:border-orange-400 dark:focus:border-orange-300 transition-all duration-200 dark:text-gray-100 dark:border-gray-500"
                     type="email"
                     name="email"
                     placeholder="Enter email"
@@ -78,26 +77,26 @@ const Login = () => {
                 {/* Password */}
                 <div className="space-y-1">
                   <div className="flex items-center">
-                    <BiKey className="text-3xl text-slate-500" />
+                    <BiKey className="text-3xl text-slate-500 dark:text-slate-300" />
                     <input
-                      className="flex-1 border-b-2 p-2 bg-transparent outline-none focus:border-orange-400 transition-all duration-200"
+                      className="flex-1 border-b-2 p-2 bg-transparent outline-none focus:border-orange-400 dark:focus:border-orange-300 transition-all duration-200 dark:text-gray-100 dark:border-gray-500"
                       type="password"
                       name="pass"
                       placeholder="Enter password"
                       required
                     />
                   </div>
-                  <p className="text-end text-[13px] text-slate-500">
+                  <p className="text-end text-[13px] text-slate-500 dark:text-slate-400">
                     Forgot password?
                   </p>
                 </div>
 
                 {/* Register link */}
-                <div className="p-1 flex gap-2 text-sm text-slate-600">
+                <div className="p-1 flex gap-2 text-sm text-slate-600 dark:text-slate-300">
                   <span>Don't have an account?</span>
                   <Link
                     to="/registration"
-                    className="text-orange-500 hover:underline"
+                    className="text-orange-500 dark:text-orange-400 hover:underline"
                   >
                     Register
                   </Link>
@@ -107,7 +106,7 @@ const Login = () => {
                 <input
                   type="submit"
                   value="Login Now"
-                  className="btn cursor-pointer bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded font-semibold transition"
+                  className="btn cursor-pointer bg-amber-600 hover:bg-amber-700 dark:bg-amber-500 dark:hover:bg-amber-600 text-white px-4 py-2 rounded font-semibold transition"
                 />
               </form>
             </div>
@@ -116,7 +115,7 @@ const Login = () => {
             <Social from={from} />
 
             {/* Lottie animation */}
-            <div className="lottie flex-1 justify-end mx-20  lg:block">
+            <div className="lottie flex-1 justify-end mx-20 lg:block">
               <Lottie animationData={loginAnimation} loop={true} />
             </div>
           </div>
