@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useLoaderData } from "react-router";
-import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../hooks/src/hooks/useAxiosSecure";
@@ -58,16 +57,16 @@ const DetailsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-16 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-700 py-16 px-4">
       <div className="container mx-auto px-4 sm:px-6 lg:p-8">
         <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 mb-4 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 dark:from-amber-400 dark:via-orange-400 dark:to-yellow-400 mb-4 tracking-tight">
             Food Details
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-amber-500 to-orange-500 mx-auto rounded-full"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-amber-500 to-orange-500 dark:from-amber-400 dark:to-orange-400 mx-auto rounded-full"></div>
         </div>
 
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-white/50">
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-white/50 dark:bg-gray-900/90 dark:border-gray-700">
           {/* Hero Image */}
           <div className="relative">
             <img
@@ -77,7 +76,7 @@ const DetailsPage = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
             <div className="absolute top-6 right-6">
-              <span className="bg-amber-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg capitalize">
+              <span className="bg-amber-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg capitalize dark:bg-amber-600">
                 {status}
               </span>
             </div>
@@ -92,8 +91,8 @@ const DetailsPage = () => {
             {/* Food Information Grid */}
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <div className="space-y-6">
-                <h4 className="text-2xl font-bold text-amber-900 mb-6 flex items-center">
-                  <div className="w-2 h-8 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full mr-3"></div>
+                <h4 className="text-2xl font-bold text-amber-900 dark:text-amber-400 mb-6 flex items-center">
+                  <div className="w-2 h-8 bg-gradient-to-b from-amber-500 to-orange-500 dark:from-amber-400 dark:to-orange-400 rounded-full mr-3"></div>
                   Food Information
                 </h4>
                 <Info label="Food ID" value={_id} icon="🆔" />
@@ -103,8 +102,8 @@ const DetailsPage = () => {
               </div>
 
               <div className="space-y-6">
-                <h4 className="text-2xl font-bold text-amber-900 mb-6 flex items-center">
-                  <div className="w-2 h-8 bg-gradient-to-b from-orange-500 to-red-500 rounded-full mr-3"></div>
+                <h4 className="text-2xl font-bold text-amber-900 dark:text-amber-400 mb-6 flex items-center">
+                  <div className="w-2 h-8 bg-gradient-to-b from-orange-500 to-red-500 dark:from-orange-400 dark:to-red-400 rounded-full mr-3"></div>
                   Request Information
                 </h4>
                 <Info
@@ -118,21 +117,21 @@ const DetailsPage = () => {
 
             {/* Additional Notes */}
             <div className="mb-12">
-              <label className="block text-xl font-bold text-amber-900 mb-4 flex items-center">
-                <div className="w-2 h-6 bg-gradient-to-b from-yellow-500 to-amber-500 rounded-full mr-3"></div>
+              <label className="block text-xl font-bold text-amber-900 dark:text-amber-400 mb-4 flex items-center">
+                <div className="w-2 h-6 bg-gradient-to-b from-yellow-500 to-amber-500 dark:from-yellow-400 dark:to-amber-400 rounded-full mr-3"></div>
                 Additional Notes
               </label>
               <div className="relative">
                 <textarea
                   value={userNotes}
                   onChange={(e) => setUserNotes(e.target.value)}
-                  className="w-full border-2 border-amber-200 rounded-2xl p-6 bg-amber-50/50 text-amber-900 focus:outline-none focus:ring-4 focus:ring-amber-200/50 focus:border-amber-500 transition-all duration-300 resize-none"
+                  className="w-full border-2 border-amber-200 dark:border-amber-700 rounded-2xl p-6 bg-amber-50/50 dark:bg-amber-900/40 text-amber-900 dark:text-amber-200 focus:outline-none focus:ring-4 focus:ring-amber-200/50 dark:focus:ring-amber-700/70 focus:border-amber-500 dark:focus:border-amber-600 transition-all duration-300 resize-none"
                   rows="4"
                   placeholder="Enter additional notes..."
                 ></textarea>
                 <div className="absolute top-4 right-4">
                   <svg
-                    className="w-6 h-6 text-amber-400"
+                    className="w-6 h-6 text-amber-400 dark:text-amber-300"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -150,19 +149,19 @@ const DetailsPage = () => {
 
             {/* Donor Info */}
             <div className="mb-12">
-              <h4 className="text-2xl font-bold text-amber-900 mb-6 flex items-center">
-                <div className="w-2 h-8 bg-gradient-to-b from-green-500 to-emerald-500 rounded-full mr-3"></div>
+              <h4 className="text-2xl font-bold text-amber-900 dark:text-amber-400 mb-6 flex items-center">
+                <div className="w-2 h-8 bg-gradient-to-b from-green-500 to-emerald-500 dark:from-green-400 dark:to-emerald-400 rounded-full mr-3"></div>
                 Donor Information
               </h4>
-              <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6 border-2 border-amber-100">
+              <div className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-gray-800 dark:to-gray-900 rounded-2xl p-6 border-2 border-amber-100 dark:border-gray-700">
                 <div className="flex items-center space-x-6">
                   <div className="relative">
                     <img
                       src={donorImg}
                       alt={donorName}
-                      className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg"
+                      className="w-20 h-20 rounded-full object-cover border-4 border-white shadow-lg dark:border-gray-800"
                     />
-                    <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white flex items-center justify-center">
+                    <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white dark:border-gray-800 flex items-center justify-center">
                       <svg
                         className="w-4 h-4 text-white"
                         fill="currentColor"
@@ -177,10 +176,10 @@ const DetailsPage = () => {
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h5 className="text-xl font-bold text-amber-900 mb-1">
+                    <h5 className="text-xl font-bold text-amber-900 dark:text-amber-300 mb-1">
                       {donorName}
                     </h5>
-                    <p className="text-amber-700 mb-2 flex items-center">
+                    <p className="text-amber-700 dark:text-amber-400 mb-2 flex items-center">
                       <svg
                         className="w-4 h-4 mr-2"
                         fill="none"
@@ -196,7 +195,7 @@ const DetailsPage = () => {
                       </svg>
                       {donorEmail}
                     </p>
-                    <span className="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">
+                    <span className="inline-block bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-400 px-3 py-1 rounded-full text-sm font-semibold">
                       Verified Donor
                     </span>
                   </div>
@@ -208,7 +207,7 @@ const DetailsPage = () => {
             <div className="text-center">
               <button
                 onClick={handleRequest}
-                className="inline-flex items-center bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 hover:from-amber-700 hover:via-orange-700 hover:to-amber-700 text-white text-xl font-bold px-12 py-4 rounded-2xl transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 hover:scale-105"
+                className="inline-flex items-center bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 dark:from-amber-500 dark:via-orange-500 dark:to-amber-500 hover:from-amber-700 hover:via-orange-700 hover:to-amber-700 text-white text-xl font-bold px-12 py-4 rounded-2xl transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 hover:scale-105"
               >
                 <svg
                   className="w-6 h-6 mr-3"
@@ -234,14 +233,16 @@ const DetailsPage = () => {
 };
 
 const Info = ({ label, value, icon }) => (
-  <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-amber-100 hover:shadow-lg transition-all duration-300">
+  <div className="bg-white/70 backdrop-blur-sm rounded-xl p-4 border border-amber-100 dark:bg-gray-800 dark:border-amber-700 hover:shadow-lg transition-all duration-300">
     <div className="flex items-start space-x-3">
       <span className="text-2xl">{icon}</span>
       <div className="flex-1">
-        <span className="block text-sm font-semibold text-amber-600 uppercase tracking-wide mb-1">
+        <span className="block text-sm font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-wide mb-1">
           {label}
         </span>
-        <p className="text-lg font-bold text-amber-900 break-words">{value}</p>
+        <p className="text-lg font-bold text-amber-900 dark:text-amber-200 break-words">
+          {value}
+        </p>
       </div>
     </div>
   </div>
