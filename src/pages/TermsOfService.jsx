@@ -69,13 +69,13 @@ const TermsOfService = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-orange-50">
+    <div className="min-h-screen bg-orange-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Header Section */}
-      <div className="bg-amber-600 text-white py-16">
+      <div className="bg-amber-600 dark:bg-amber-700 text-white py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl font-bold mb-4">Terms of Service</h1>
-            <p className="text-xl text-amber-100">
+            <p className="text-xl text-amber-100 dark:text-amber-200">
               Please read these terms carefully before using FoodieMoodie
             </p>
           </div>
@@ -84,11 +84,11 @@ const TermsOfService = () => {
 
       {/* Last Updated Notice */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-amber-100 border-l-4 border-amber-500 p-6 rounded">
-          <p className="text-amber-700 font-semibold">
+        <div className="bg-amber-100 dark:bg-amber-900 border-l-4 border-amber-500 dark:border-amber-400 p-6 rounded transition-colors duration-300">
+          <p className="text-amber-700 dark:text-amber-300 font-semibold">
             Last Updated: August 10, 2025
           </p>
-          <p className="text-amber-600 text-sm mt-1">
+          <p className="text-amber-600 dark:text-amber-400 text-sm mt-1">
             These terms are effective immediately upon posting
           </p>
         </div>
@@ -96,13 +96,13 @@ const TermsOfService = () => {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="">
+        <div>
           {/* Introduction */}
-          <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold text-amber-700 mb-4">
+          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-8 transition-colors duration-300">
+            <h2 className="text-2xl font-bold text-amber-700 dark:text-amber-300 mb-4">
               Welcome to FoodieMoodie
             </h2>
-            <p className="text-amber-600 leading-relaxed text-lg">
+            <p className="text-amber-600 dark:text-amber-400 leading-relaxed text-lg">
               These Terms of Service ("Terms") govern your use of FoodieMoodie,
               a community-driven platform designed to reduce food waste by
               connecting food donors with recipients. By using our service, you
@@ -116,7 +116,7 @@ const TermsOfService = () => {
             {termsData.map((section, index) => (
               <div
                 key={section.id}
-                className="bg-white rounded-lg shadow-lg border border-orange-100"
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-orange-100 dark:border-gray-700 transition-colors duration-300"
               >
                 <button
                   onClick={() => toggleSection(section.id)}
@@ -124,15 +124,15 @@ const TermsOfService = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                      <div className="w-10 h-10 bg-orange-500 dark:bg-orange-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
                         {index + 1}
                       </div>
-                      <h3 className="text-xl font-bold text-amber-700">
+                      <h3 className="text-xl font-bold text-amber-700 dark:text-amber-300">
                         {section.title}
                       </h3>
                     </div>
                     <svg
-                      className={`w-6 h-6 text-amber-600 transition-transform duration-300 ${
+                      className={`w-6 h-6 text-amber-600 dark:text-amber-400 transition-transform duration-300 ${
                         expandedSections[section.id] ? "rotate-180" : ""
                       }`}
                       fill="none"
@@ -157,8 +157,8 @@ const TermsOfService = () => {
                   }`}
                 >
                   <div className="px-6 pb-6">
-                    <div className="w-full h-px bg-orange-200 mb-4"></div>
-                    <p className="text-amber-600 leading-relaxed text-lg">
+                    <div className="w-full h-px bg-orange-200 dark:bg-orange-700 mb-4 transition-colors duration-300"></div>
+                    <p className="text-amber-600 dark:text-amber-400 leading-relaxed text-lg">
                       {section.content}
                     </p>
                   </div>
@@ -168,40 +168,40 @@ const TermsOfService = () => {
           </div>
 
           {/* Agreement Section */}
-          <div className="bg-amber-600 rounded-lg p-8 mt-12 text-white text-center">
+          <div className="bg-amber-600 dark:bg-amber-700 rounded-lg p-8 mt-12 text-white text-center transition-colors duration-300">
             <h3 className="text-3xl font-bold mb-4">Agreement Confirmation</h3>
-            <p className="text-xl text-amber-100 mb-6">
+            <p className="text-xl text-amber-100 dark:text-amber-200 mb-6">
               By continuing to use FoodieMoodie, you acknowledge that you have
               read, understood, and agree to be bound by these Terms of Service.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="bg-white text-amber-600 px-8 py-3 rounded-lg font-bold cursor-pointer hover:bg-orange-50">
+              <button className="bg-white text-amber-600 px-8 py-3 rounded-lg font-bold cursor-pointer hover:bg-orange-50 transition">
                 I Accept These Terms
               </button>
-              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold cursor-pointer hover:bg-white hover:text-amber-600">
+              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold cursor-pointer hover:bg-white hover:text-amber-600 transition">
                 Download PDF Copy
               </button>
             </div>
           </div>
 
           {/* Contact Support */}
-          <div className="bg-orange-50 border border-orange-200 rounded-lg p-8 mt-8">
+          <div className="bg-orange-50 dark:bg-gray-900 border border-orange-200 dark:border-gray-700 rounded-lg p-8 mt-8 transition-colors duration-300">
             <div className="text-center">
-              <h4 className="text-2xl font-bold text-amber-700 mb-3">
+              <h4 className="text-2xl font-bold text-amber-700 dark:text-amber-300 mb-3">
                 Questions About These Terms?
               </h4>
-              <p className="text-amber-600 mb-6 text-lg">
+              <p className="text-amber-600 dark:text-amber-400 mb-6 text-lg">
                 Our legal team is here to help clarify any questions you may
                 have about our Terms of Service.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="mailto:legal@foodiemoodie.com"
-                  className="bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-orange-700 inline-flex items-center justify-center gap-2"
+                  className="bg-orange-600 dark:bg-orange-700 text-white px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-orange-700 dark:hover:bg-orange-800 inline-flex items-center justify-center gap-2 transition"
                 >
                   Email Legal Team
                 </a>
-                <button className="border-2 border-orange-600 text-orange-600 px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-orange-600 hover:text-white">
+                <button className="border-2 border-orange-600 dark:border-orange-700 text-orange-600 dark:text-orange-700 px-6 py-3 rounded-lg font-semibold cursor-pointer hover:bg-orange-600 hover:text-white dark:hover:bg-orange-700 dark:hover:text-white transition">
                   Live Chat Support
                 </button>
               </div>
