@@ -76,7 +76,7 @@ const AvailableFoods = () => {
         </div>
 
         {/* Controls Section */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-12 border border-white/50">
+        <div className="bg-white bg-opacity-80 rounded-3xl p-6 mb-12 border border-gray-200 shadow-md">
           <div className="flex flex-col lg:flex-row items-center gap-6 justify-between">
             {/* Layout Toggle */}
             <div className="flex items-center gap-4">
