@@ -14,15 +14,14 @@ const Banner = () => {
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
             Fresh{" "}
             <span className="text-orange-500 drop-shadow-sm">Delicious</span>{" "}
-            Food,
+            Food
           </h1>
 
           {/* Marquee Banner */}
           <div className="w-full max-w-lg mx-auto lg:mx-0 rounded-full p-3 bg-gradient-to-r from-orange-400 to-orange-500 text-white shadow-lg">
             <div className="overflow-hidden whitespace-nowrap">
-              <div className="animate-marquee inline-block text-sm sm:text-base font-medium">
-                Bringing Healthy Meals & Food Donations Closer To You! 🍽️ Fresh,
-                Nutritious & Affordable
+              <div className="inline-block text-sm sm:text-base font-medium">
+                Bringing Fresh Healthy Meals & Food Donations Closer To You! 🍽️
               </div>
             </div>
           </div>
@@ -60,25 +59,6 @@ const Banner = () => {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes marquee {
-          0% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-
-        .animate-marquee {
-          animation: marquee 15s linear infinite;
-        }
-
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 };

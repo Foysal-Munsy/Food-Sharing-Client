@@ -5,31 +5,23 @@ import axiosPublic from "../hooks/axiosPublic";
 import Pagination from "@mui/material/Pagination";
 
 const AvailableFoods = () => {
-  // pagination state
-  const [currentPage, setCurrentPage] = useState(1);
+  const [page, setPage] = useState(1);
+  // ====== Added: State to store items per page dynamically ======
   const [itemsPerPage, setItemsPerPage] = useState(2);
 
-  // ✅ Added: total count state for server-side pagination
-  const [totalCount, setTotalCount] = useState(0); // ✅ modified
-
-  // data state
   const [foods, setFoods] = useState([]);
   const [sortedFoods, setSortedFoods] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
   const [searchTerm, setSearchTerm] = useState("");
-  const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(true); // Layout toggle
+  const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(true);
 
   useEffect(() => {
-    // ✅ Modified: now expecting { total, foods } from backend
-    axiosPublic
-      .get(`/available-foods?page=${currentPage}&size=${itemsPerPage}`)
-      .then((res) => {
-        const sorted = sortFoods(res.data.foods, sortOrder); // ✅ modified
-        setFoods(res.data.foods); // ✅ modified
-        setSortedFoods(sorted);
-        setTotalCount(res.data.total); // ✅ modified
-      });
-  }, [sortOrder, currentPage, itemsPerPage]);
+    axiosPublic.get("/available-foods").then((res) => {
+      const sorted = sortFoods(res.data, sortOrder);
+      setFoods(res.data);
+      setSortedFoods(sorted);
+    });
+  }, [sortOrder]);
 
   useEffect(() => {
     const sorted = sortFoods([...foods], sortOrder);
@@ -44,20 +36,22 @@ const AvailableFoods = () => {
     });
   };
 
+  // ====== Filter foods based on search term =====
   const filteredFoods = sortedFoods.filter((food) =>
     food.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // ✅ Modified: use totalCount from backend instead of foods.length
-  const numberOfPages = Math.ceil(totalCount / itemsPerPage); // ✅ modified
+  // ====== Calculate total number of pages dynamically =====
+  const count = Math.ceil(filteredFoods.length / itemsPerPage);
+
+  // ====== Get only the foods for current page =====
+  const paginatedFoods = filteredFoods.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
 
   const handlePagination = (event, value) => {
-    setCurrentPage(value);
-  };
-  const handleItemsPerPage = (e) => {
-    const val = parseInt(e.target.value);
-    setItemsPerPage(val);
-    setCurrentPage(1);
+    setPage(value);
   };
 
   return (
@@ -139,6 +133,28 @@ const AvailableFoods = () => {
                 <option value="desc">Newest First</option>
               </select>
             </div>
+
+            {/* ====== Added: Items per page select ===== */}
+            <div className="flex items-center gap-2">
+              <label className="text-amber-800 font-semibold whitespace-nowrap">
+                Items per page:
+              </label>
+              <select
+                value={itemsPerPage}
+                onChange={(e) => {
+                  setItemsPerPage(parseInt(e.target.value));
+                  setPage(1); // reset page to 1 on items per page change
+                }}
+                className="px-4 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-amber-200/50 focus:border-amber-500 bg-white/90 text-amber-900 font-medium transition-all duration-300 cursor-pointer"
+              >
+                <option value={2}>2</option>
+                <option value={4}>4</option>
+                <option value={6}>6</option>
+                <option value={8}>8</option>
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+              </select>
+            </div>
           </div>
         </div>
 
@@ -170,84 +186,83 @@ const AvailableFoods = () => {
             </div>
           </div>
         ) : (
-          <div
-            className={`grid gap-8 sm:grid-cols-2 ${
-              isThreeColumnLayout ? "lg:grid-cols-3" : "lg:grid-cols-2"
-            } xl:grid-cols-${isThreeColumnLayout ? "3" : "2"}`}
-          >
-            {filteredFoods.map((food) => (
-              <div
-                key={food._id}
-                className="group bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden border border-white/50 flex flex-col transform hover:-translate-y-2 transition-all duration-300 hover:scale-105"
-              >
-                <div className="relative overflow-hidden">
-                  <img
-                    src={food.image}
-                    alt={food.name}
-                    className="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg capitalize">
-                      {food.status}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-amber-900 mb-4 group-hover:text-amber-700 transition-colors duration-200">
-                    {food.name}
-                  </h3>
-
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center text-amber-700">
-                      <div className="w-2 h-2 bg-amber-500 rounded-full mr-3"></div>
-                      <span className="font-semibold text-sm">Quantity:</span>
-                      <span className="ml-2 text-amber-800 font-medium">
-                        {food.quantity}
-                      </span>
-                    </div>
-                    <div className="flex items-center text-amber-700">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
-                      <span className="font-semibold text-sm">Location:</span>
-                      <span className="ml-2 text-amber-800 font-medium truncate">
-                        {food.location}
-                      </span>
-                    </div>
-                    <div className="flex items-center text-amber-700">
-                      <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
-                      <span className="font-semibold text-sm">Expires:</span>
-                      <span className="ml-2 text-amber-800 font-medium">
-                        {format(new Date(food.date), "yyyy-MM-dd")}
+          <>
+            <div
+              className={`grid gap-8 sm:grid-cols-2 ${
+                isThreeColumnLayout ? "lg:grid-cols-3" : "lg:grid-cols-2"
+              } xl:grid-cols-${isThreeColumnLayout ? "3" : "2"}`}
+            >
+              {/* ====== Use paginatedFoods instead of filteredFoods ===== */}
+              {paginatedFoods.map((food) => (
+                <div
+                  key={food._id}
+                  className="group bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl hover:shadow-2xl overflow-hidden border border-white/50 flex flex-col transform hover:-translate-y-2 transition-all duration-300 hover:scale-105"
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={food.image}
+                      alt={food.name}
+                      className="w-full h-52 object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute top-4 right-4">
+                      <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg capitalize">
+                        {food.status}
                       </span>
                     </div>
                   </div>
 
-                  <Link
-                    to={`/details/${food._id}`}
-                    className="mt-auto block bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 hover:from-amber-700 hover:via-orange-700 hover:to-amber-700 text-white px-6 py-3 rounded-xl transition-all duration-300 text-center font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            ))}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <h3 className="text-2xl font-bold text-amber-900 mb-4 group-hover:text-amber-700 transition-colors duration-200">
+                      {food.name}
+                    </h3>
 
-            {/* ✅ Modified: now uses backend totalCount */}
-            <div className="flex gap-10 col-span-full justify-center items-center mt-8">
+                    <div className="space-y-3 mb-6">
+                      <div className="flex items-center text-amber-700">
+                        <div className="w-2 h-2 bg-amber-500 rounded-full mr-3"></div>
+                        <span className="font-semibold text-sm">Quantity:</span>
+                        <span className="ml-2 text-amber-800 font-medium">
+                          {food.quantity}
+                        </span>
+                      </div>
+                      <div className="flex items-center text-amber-700">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
+                        <span className="font-semibold text-sm">Location:</span>
+                        <span className="ml-2 text-amber-800 font-medium truncate">
+                          {food.location}
+                        </span>
+                      </div>
+                      <div className="flex items-center text-amber-700">
+                        <div className="w-2 h-2 bg-red-500 rounded-full mr-3"></div>
+                        <span className="font-semibold text-sm">Expires:</span>
+                        <span className="ml-2 text-amber-800 font-medium">
+                          {format(new Date(food.date), "yyyy-MM-dd")}
+                        </span>
+                      </div>
+                    </div>
+
+                    <Link
+                      to={`/details/${food._id}`}
+                      className="mt-auto block bg-gradient-to-r from-amber-600 via-orange-600 to-amber-600 hover:from-amber-700 hover:via-orange-700 hover:to-amber-700 text-white px-6 py-3 rounded-xl transition-all duration-300 text-center font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
+                      View Details
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ====== Pagination UI ===== */}
+            <div className="mt-12 flex justify-center">
               <Pagination
-                count={numberOfPages}
-                page={currentPage}
+                count={count}
+                page={page}
                 onChange={handlePagination}
                 shape="rounded"
+                color="primary"
               />
-              <select value={itemsPerPage} onChange={handleItemsPerPage}>
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-              </select>
             </div>
-          </div>
+          </>
         )}
       </div>
     </div>

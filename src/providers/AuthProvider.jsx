@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser) {
         setUser(currentUser);
 
-        axios.get("https://food-sharing-server-seven.vercel.app/", {
+        axios.get("http://localhost:5001/", {
           headers: {
             Authorization: `Bearer ${currentUser.accessToken}`,
           },

@@ -8,7 +8,7 @@ const useAxiosSecure = () => {
   // Memoize axios instance so it does not recreate on every render
   const axiosSecure = useMemo(() => {
     return axios.create({
-      baseURL: "https://food-sharing-server-seven.vercel.app",
+      baseURL: "http://localhost:5001",
       headers: {
         Authorization: `Bearer ${user?.accessToken}`,
       },
