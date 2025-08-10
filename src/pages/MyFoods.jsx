@@ -53,18 +53,18 @@ export default function MyFoods() {
       }
     }
   };
-  // Loading your food items...
+
   if (loading) {
     return <InsidePageLoading word={"Loading your food items..."} />;
   }
 
   if (foods.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100 px-4">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100 dark:from-gray-900 dark:to-gray-800 px-4">
         <div className="text-center max-w-md">
-          <div className="w-24 h-24 bg-amber-200 rounded-full flex items-center justify-center mx-auto mb-6">
+          <div className="w-24 h-24 bg-amber-200 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6">
             <svg
-              className="w-12 h-12 text-amber-600"
+              className="w-12 h-12 text-amber-600 dark:text-amber-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -77,10 +77,10 @@ export default function MyFoods() {
               />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-amber-800 mb-4">
+          <h2 className="text-2xl font-bold text-amber-800 dark:text-amber-300 mb-4">
             No Food Items Yet
           </h2>
-          <p className="text-amber-700 mb-6">
+          <p className="text-amber-700 dark:text-gray-300 mb-6">
             You haven't listed any food items yet. Start sharing food to help
             reduce waste!
           </p>
@@ -96,13 +96,13 @@ export default function MyFoods() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100 dark:from-gray-900 dark:to-gray-800 py-8 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto px-4 sm:px-6 lg:p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-amber-800 mb-2">
+          <h1 className="text-3xl sm:text-4xl font-bold text-amber-800 dark:text-amber-300 mb-2">
             My Listed Foods
           </h1>
-          <p className="text-amber-700">
+          <p className="text-amber-700 dark:text-gray-300">
             Manage your food donations and reduce waste
           </p>
         </div>
@@ -112,7 +112,7 @@ export default function MyFoods() {
           {foods.map((food) => (
             <div
               key={food._id}
-              className="bg-white rounded-lg shadow-md border border-amber-200 p-4"
+              className="bg-white dark:bg-gray-800 rounded-lg shadow-md border border-amber-200 dark:border-gray-700 p-4"
             >
               <div className="flex items-start gap-4">
                 <img
@@ -121,10 +121,10 @@ export default function MyFoods() {
                   className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg flex-shrink-0"
                 />
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-lg text-amber-900 truncate">
+                  <h3 className="font-bold text-lg text-amber-900 dark:text-amber-200 truncate">
                     {food.name}
                   </h3>
-                  <div className="mt-2 space-y-1 text-sm text-gray-600">
+                  <div className="mt-2 space-y-1 text-sm text-gray-600 dark:text-gray-300">
                     <p>
                       <span className="font-medium">Quantity:</span>{" "}
                       {food.quantity}
@@ -141,10 +141,10 @@ export default function MyFoods() {
                       <span
                         className={`ml-1 px-2 py-1 rounded-full text-xs font-semibold ${
                           food.status === "available"
-                            ? "bg-green-100 text-green-800"
+                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                             : food.status === "requested"
-                            ? "bg-yellow-100 text-yellow-800"
-                            : "bg-red-100 text-red-800"
+                            ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                            : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                         }`}
                       >
                         {food.status}
@@ -172,39 +172,34 @@ export default function MyFoods() {
         </div>
 
         {/* Desktop Table View */}
-        <div className="hidden lg:block bg-white rounded-lg shadow-lg border border-amber-200 overflow-hidden">
+        <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-amber-200 dark:border-gray-700 overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gradient-to-r from-amber-100 to-amber-200">
+              <thead className="bg-gradient-to-r from-amber-100 to-amber-200 dark:from-gray-700 dark:to-gray-600">
                 <tr>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Image
-                  </th>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Name
-                  </th>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Quantity
-                  </th>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Location
-                  </th>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Date
-                  </th>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Status
-                  </th>
-                  <th className="py-4 px-6 text-left text-sm font-bold text-amber-900 uppercase tracking-wider">
-                    Actions
-                  </th>
+                  {[
+                    "Image",
+                    "Name",
+                    "Quantity",
+                    "Location",
+                    "Date",
+                    "Status",
+                    "Actions",
+                  ].map((header) => (
+                    <th
+                      key={header}
+                      className="py-4 px-6 text-left text-sm font-bold text-amber-900 dark:text-amber-200 uppercase tracking-wider"
+                    >
+                      {header}
+                    </th>
+                  ))}
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-amber-100">
+              <tbody className="bg-white dark:bg-gray-800 divide-y divide-amber-100 dark:divide-gray-700">
                 {foods.map((food) => (
                   <tr
                     key={food._id}
-                    className="hover:bg-amber-50 transition-colors duration-200"
+                    className="hover:bg-amber-50 dark:hover:bg-gray-700 transition-colors duration-200"
                   >
                     <td className="py-4 px-6">
                       <img
@@ -213,20 +208,26 @@ export default function MyFoods() {
                         className="w-16 h-16 object-cover rounded-lg shadow-sm"
                       />
                     </td>
-                    <td className="py-4 px-6 font-semibold text-amber-900">
+                    <td className="py-4 px-6 font-semibold text-amber-900 dark:text-amber-200">
                       {food.name}
                     </td>
-                    <td className="py-4 px-6 text-gray-700">{food.quantity}</td>
-                    <td className="py-4 px-6 text-gray-700">{food.location}</td>
-                    <td className="py-4 px-6 text-gray-700">{food.date}</td>
+                    <td className="py-4 px-6 text-gray-700 dark:text-gray-300">
+                      {food.quantity}
+                    </td>
+                    <td className="py-4 px-6 text-gray-700 dark:text-gray-300">
+                      {food.location}
+                    </td>
+                    <td className="py-4 px-6 text-gray-700 dark:text-gray-300">
+                      {food.date}
+                    </td>
                     <td className="py-4 px-6">
                       <span
                         className={`px-3 py-1 rounded-full text-sm font-semibold ${
                           food.status === "available"
-                            ? "bg-green-100 text-green-800"
+                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
                             : food.status === "requested"
-                            ? "bg-yellow-100 text-yellow-800"
-                            : "bg-red-100 text-red-800"
+                            ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                            : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                         }`}
                       >
                         {food.status}
