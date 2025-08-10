@@ -51,7 +51,7 @@ const Login = () => {
   return (
     <div className="bg-[url(/bg.png)] bg-contain">
       <div className="bg-white bg-opacity-90 min-h-screen">
-        <div className="w-11/12 mx-auto py-10 m-5 p-5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="title mt-5">
             <Title>Login Now</Title>
           </div>
@@ -107,7 +107,7 @@ const Login = () => {
                 <input
                   type="submit"
                   value="Login Now"
-                  className="btn cursor-pointer bg-amber-400 hover:bg-amber-500 text-white px-4 py-2 rounded font-semibold transition"
+                  className="btn cursor-pointer bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded font-semibold transition"
                 />
               </form>
             </div>
@@ -116,7 +116,7 @@ const Login = () => {
             <Social from={from} />
 
             {/* Lottie animation */}
-            <div className="lottie flex-1 mx-20 hidden lg:block">
+            <div className="lottie flex-1 justify-end mx-20  lg:block">
               <Lottie animationData={loginAnimation} loop={true} />
             </div>
           </div>

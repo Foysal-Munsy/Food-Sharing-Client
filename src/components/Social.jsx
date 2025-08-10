@@ -12,7 +12,7 @@ const Social = ({ from }) => {
     });
   };
   return (
-    <div className=" bg-white shadow cursor-pointer py-3 rounded-full flex flex-col items-center">
+    <div className="  cursor-pointer py-3 rounded-full flex flex-col items-center">
       <div>
         <img
           onClick={handleSignIn}
@@ -21,6 +21,7 @@ const Social = ({ from }) => {
           alt=""
         />
       </div>
+
       {/* <div className="">
         <img
           className="w-[64px]"

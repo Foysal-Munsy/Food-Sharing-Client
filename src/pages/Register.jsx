@@ -4,7 +4,7 @@ import { BiEnvelope, BiImageAdd, BiKey, BiUser } from "react-icons/bi";
 import { Link, useNavigate, useLocation } from "react-router";
 import { updateProfile } from "firebase/auth";
 import Swal from "sweetalert2";
-import happy from "../assets/happy.json";
+import signup from "../assets/Signup.json";
 import Social from "../components/Social";
 import Title from "../components/Title";
 import { AuthContext } from "../providers/AuthProvider";
@@ -87,13 +87,13 @@ const Register = () => {
   return (
     <div className="bg-[url(/bg.png)] bg-contain">
       <div className="bg-white bg-opacity-90 min-h-screen">
-        <div className="w-11/12 mx-auto py-10 m-5 p-5">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
           <div className="title mt-5">
             <Title>Register Now</Title>
           </div>
-
-          <div className="flex justify-between items-center gap-5 pt-8 flex-wrap">
-            <div className="login-for flex-1 min-w-[300px]">
+          {/* login-form flex-1 w-full max-w-md */}
+          <div className="flex justify-between items-center gap-5 pt-8 flex-col lg:flex-row ">
+            <div className="login-for flex-1 w-full max-w-md">
               <form
                 onSubmit={handleSubmit}
                 className="bg-white p-5 flex flex-col gap-8 backdrop-blur-sm bg-opacity-10 shadow-lg rounded-lg"
@@ -152,15 +152,19 @@ const Register = () => {
                 <input
                   type="submit"
                   value="Register Now"
-                  className="btn cursor-pointer bg-amber-400 hover:bg-amber-500 text-white px-4 py-2 rounded font-semibold transition"
+                  className="btn cursor-pointer bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded font-semibold transition"
                 />
               </form>
             </div>
 
             <Social />
 
-            <div className="lottie flex-1 flex justify-center min-w-[300px]">
-              <Lottie animationData={happy} loop={true} />
+            <div className="lottie flex-1 flex justify-center items-center min-w-[300px] max-w-[500px] h-[400px]">
+              <Lottie
+                animationData={signup}
+                className="h-[400px]"
+                loop={true}
+              />
             </div>
           </div>
         </div>
