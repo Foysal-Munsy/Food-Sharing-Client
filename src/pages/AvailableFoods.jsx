@@ -275,9 +275,9 @@ const AvailableFoods = () => {
                   onChange={handleItemsPerPage}
                   className="px-4 py-2 border-2 border-amber-200 rounded-xl bg-white/90 text-amber-900 font-medium focus:outline-none focus:ring-4 focus:ring-amber-200/50 focus:border-amber-500 transition-all duration-300 cursor-pointer hover:shadow-md"
                 >
-                  <option value="2">2</option>
-                  <option value="4">4</option>
+                  <option value="3">3</option>
                   <option value="6">6</option>
+                  <option value="9">9</option>
                 </select>
               </div>
             </div>
