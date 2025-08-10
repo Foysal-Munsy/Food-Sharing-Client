@@ -59,7 +59,7 @@ const DetailsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 py-16 px-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto px-4 sm:px-6 lg:p-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 mb-4 tracking-tight">
             Food Details
