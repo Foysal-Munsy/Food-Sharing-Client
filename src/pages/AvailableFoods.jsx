@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { format } from "date-fns";
 import axiosPublic from "../hooks/axiosPublic";
 import Pagination from "@mui/material/Pagination";
+import InsidePageLoading from "../components/InsidePageLoading";
 
 const AvailableFoods = () => {
   // pagination state
@@ -11,6 +12,7 @@ const AvailableFoods = () => {
 
   // total count state for server-side pagination
   const [totalCount, setTotalCount] = useState(0);
+  const [loading, setLoading] = useState(true);
 
   // data state
   const [foods, setFoods] = useState([]);
@@ -20,6 +22,7 @@ const AvailableFoods = () => {
   const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(true); // Layout toggle
 
   useEffect(() => {
+    setLoading(true);
     axiosPublic
       .get(`/available-foods?page=${currentPage}&size=${itemsPerPage}`)
       .then((res) => {
@@ -27,7 +30,9 @@ const AvailableFoods = () => {
         setFoods(res.data.foods);
         setSortedFoods(sorted);
         setTotalCount(res.data.total);
-      });
+        // setLoading(false);
+      })
+      .finally(() => setLoading(false));
   }, [sortOrder, currentPage, itemsPerPage]);
 
   useEffect(() => {
@@ -57,6 +62,8 @@ const AvailableFoods = () => {
     setItemsPerPage(val);
     setCurrentPage(1);
   };
+  if (loading)
+    return <InsidePageLoading word={"Available foods are loading...."} />;
 
   return (
     <div className="py-16 px-4 md:px-10 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 min-h-screen">

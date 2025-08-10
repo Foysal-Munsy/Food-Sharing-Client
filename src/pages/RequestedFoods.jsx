@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import useAxiosSecure from "../hooks/src/hooks/useAxiosSecure";
+import InsidePageLoading from "../components/InsidePageLoading";
 
 export default function RequestedFoods() {
   const { user } = useContext(AuthContext);
@@ -24,16 +25,7 @@ export default function RequestedFoods() {
   }, [user, axiosSecure]);
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100">
-        <div className="text-center">
-          <div className="w-16 h-16 border-4 border-amber-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-amber-700 font-medium text-lg">
-            Loading requested foods...
-          </p>
-        </div>
-      </div>
-    );
+    return <InsidePageLoading word={"Loading your requested foods..."} />;
   }
 
   if (foods.length === 0) {
