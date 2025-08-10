@@ -234,7 +234,7 @@ const AvailableFoods = () => {
             ))}
 
             {/* ✅ Modified: now uses backend totalCount */}
-            <div className="flex gap-10 col-span-full justify-center items-center mt-8">
+            {/* <div className="flex gap-10 col-span-full justify-center items-center mt-8">
               <Pagination
                 count={numberOfPages}
                 page={currentPage}
@@ -246,6 +246,50 @@ const AvailableFoods = () => {
                 <option value="4">4</option>
                 <option value="6">6</option>
               </select>
+            </div> */}
+
+            {/* ✅ Improved Pagination UI */}
+            <div className="col-span-full flex flex-col sm:flex-row items-center justify-center gap-6 mt-10  p-5  ">
+              {/* MUI Pagination */}
+              <Pagination
+                count={numberOfPages}
+                page={currentPage}
+                onChange={handlePagination}
+                shape="rounded"
+                color="primary"
+                siblingCount={1}
+                boundaryCount={1}
+                sx={{
+                  "& .MuiPaginationItem-root": {
+                    color: "#92400E", // amber-900
+                    fontWeight: "bold",
+                  },
+                  "& .Mui-selected": {
+                    background:
+                      "linear-gradient(to right, #d97706, #f59e0b, #d97706)", // amber-orange gradient
+                    color: "#fff",
+                  },
+                  "& .MuiPaginationItem-root:hover": {
+                    backgroundColor: "#fde68a", // amber-200
+                  },
+                }}
+              />
+
+              {/* Items Per Page Dropdown */}
+              <div className="flex items-center gap-3">
+                <label className="text-amber-800 font-medium">
+                  Items per page:
+                </label>
+                <select
+                  value={itemsPerPage}
+                  onChange={handleItemsPerPage}
+                  className="px-4 py-2 border-2 border-amber-200 rounded-xl bg-white/90 text-amber-900 font-medium focus:outline-none focus:ring-4 focus:ring-amber-200/50 focus:border-amber-500 transition-all duration-300 cursor-pointer hover:shadow-md"
+                >
+                  <option value="2">2</option>
+                  <option value="4">4</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
             </div>
           </div>
         )}
