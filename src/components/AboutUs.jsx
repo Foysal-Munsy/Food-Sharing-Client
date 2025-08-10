@@ -97,7 +97,7 @@ const AboutUs = () => {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-orange-200/30 to-transparent rounded-full blur-3xl translate-x-48 translate-y-48"></div>
 
       <motion.div
-        className="max-w-7xl mx-auto relative z-10"
+        className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}

@@ -9,8 +9,8 @@ const AvailableFoods = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(2);
 
-  // ✅ Added: total count state for server-side pagination
-  const [totalCount, setTotalCount] = useState(0); // ✅ modified
+  // total count state for server-side pagination
+  const [totalCount, setTotalCount] = useState(0);
 
   // data state
   const [foods, setFoods] = useState([]);
@@ -20,14 +20,13 @@ const AvailableFoods = () => {
   const [isThreeColumnLayout, setIsThreeColumnLayout] = useState(true); // Layout toggle
 
   useEffect(() => {
-    // ✅ Modified: now expecting { total, foods } from backend
     axiosPublic
       .get(`/available-foods?page=${currentPage}&size=${itemsPerPage}`)
       .then((res) => {
-        const sorted = sortFoods(res.data.foods, sortOrder); // ✅ modified
-        setFoods(res.data.foods); // ✅ modified
+        const sorted = sortFoods(res.data.foods, sortOrder);
+        setFoods(res.data.foods);
         setSortedFoods(sorted);
-        setTotalCount(res.data.total); // ✅ modified
+        setTotalCount(res.data.total);
       });
   }, [sortOrder, currentPage, itemsPerPage]);
 
@@ -48,8 +47,7 @@ const AvailableFoods = () => {
     food.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // ✅ Modified: use totalCount from backend instead of foods.length
-  const numberOfPages = Math.ceil(totalCount / itemsPerPage); // ✅ modified
+  const numberOfPages = Math.ceil(totalCount / itemsPerPage);
 
   const handlePagination = (event, value) => {
     setCurrentPage(value);
@@ -233,22 +231,7 @@ const AvailableFoods = () => {
               </div>
             ))}
 
-            {/* ✅ Modified: now uses backend totalCount */}
-            {/* <div className="flex gap-10 col-span-full justify-center items-center mt-8">
-              <Pagination
-                count={numberOfPages}
-                page={currentPage}
-                onChange={handlePagination}
-                shape="rounded"
-              />
-              <select value={itemsPerPage} onChange={handleItemsPerPage}>
-                <option value="2">2</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-              </select>
-            </div> */}
-
-            {/* ✅ Improved Pagination UI */}
+            {/* Pagination UI */}
             <div className="col-span-full flex flex-col sm:flex-row items-center justify-center gap-6 mt-10  p-5  ">
               {/* MUI Pagination */}
               <Pagination
