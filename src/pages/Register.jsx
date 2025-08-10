@@ -85,23 +85,24 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-[url(/bg.png)] bg-contain">
-      <div className="bg-white bg-opacity-90 min-h-screen">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 ">
-          <div className="title mt-5">
+    <div className="bg-[url(/bg.png)] bg-contain dark:bg-gray-900">
+      <div className="bg-white bg-opacity-90 dark:bg-gray-800 dark:bg-opacity-90 min-h-screen transition-colors duration-300">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="title dark:text-gray-100">
             <Title>Register Now</Title>
           </div>
-          {/* login-form flex-1 w-full max-w-md */}
-          <div className="flex justify-between items-center gap-5 pt-8 flex-col lg:flex-row ">
+
+          <div className="flex justify-between items-center gap-5 pt-8 flex-col lg:flex-row">
             <div className="login-for flex-1 w-full max-w-md">
               <form
                 onSubmit={handleSubmit}
-                className="bg-white p-5 flex flex-col gap-8 backdrop-blur-sm bg-opacity-10 shadow-lg rounded-lg"
+                className="bg-white dark:bg-gray-800 dark:text-gray-100 p-5 flex flex-col gap-8 backdrop-blur-sm bg-opacity-10 shadow-lg rounded-lg"
               >
+                {/* Name */}
                 <div className="flex justify-start items-center">
-                  <BiUser className="text-3xl text-slate-500" />
+                  <BiUser className="text-3xl text-slate-500 dark:text-slate-300" />
                   <input
-                    className="outline-none flex-1 border-b-2 p-2 bg-transparent focus:border-orange-400 transition-all duration-200"
+                    className="outline-none flex-1 border-b-2 border-gray-300 dark:border-gray-500 p-2 bg-transparent focus:border-orange-400 dark:focus:border-orange-500 text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200"
                     type="text"
                     name="name"
                     placeholder="Enter Full Name"
@@ -109,10 +110,11 @@ const Register = () => {
                   />
                 </div>
 
+                {/* Image URL */}
                 <div className="flex justify-start items-center">
-                  <BiImageAdd className="text-3xl text-slate-500" />
+                  <BiImageAdd className="text-3xl text-slate-500 dark:text-slate-300" />
                   <input
-                    className="outline-none flex-1 border-b-2 p-2 bg-transparent focus:border-orange-400 transition-all duration-200"
+                    className="outline-none flex-1 border-b-2 border-gray-300 dark:border-gray-500 p-2 bg-transparent focus:border-orange-400 dark:focus:border-orange-500 text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200"
                     type="text"
                     name="image"
                     placeholder="Enter Image URL"
@@ -120,10 +122,11 @@ const Register = () => {
                   />
                 </div>
 
+                {/* Email */}
                 <div className="flex justify-start items-center">
-                  <BiEnvelope className="text-3xl text-slate-500" />
+                  <BiEnvelope className="text-3xl text-slate-500 dark:text-slate-300" />
                   <input
-                    className="outline-none flex-1 border-b-2 p-2 bg-transparent focus:border-orange-400 transition-all duration-200"
+                    className="outline-none flex-1 border-b-2 border-gray-300 dark:border-gray-500 p-2 bg-transparent focus:border-orange-400 dark:focus:border-orange-500 text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200"
                     type="email"
                     name="email"
                     placeholder="Enter Email"
@@ -131,10 +134,11 @@ const Register = () => {
                   />
                 </div>
 
+                {/* Password */}
                 <div className="flex justify-start items-center">
-                  <BiKey className="text-3xl text-slate-500" />
+                  <BiKey className="text-3xl text-slate-500 dark:text-slate-300" />
                   <input
-                    className="outline-none flex-1 border-b-2 p-2 bg-transparent focus:border-orange-400 transition-all duration-200"
+                    className="outline-none flex-1 border-b-2 border-gray-300 dark:border-gray-500 p-2 bg-transparent focus:border-orange-400 dark:focus:border-orange-500 text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 transition-all duration-200"
                     type="password"
                     name="pass"
                     placeholder="Enter Password"
@@ -142,13 +146,15 @@ const Register = () => {
                   />
                 </div>
 
-                <div className="p-1 flex gap-2 text-sm text-slate-600">
+                {/* Already have account */}
+                <div className="p-1 flex gap-2 text-sm text-slate-600 dark:text-slate-300">
                   <span>Already have an account?</span>
                   <Link to="/login" className="text-orange-500 hover:underline">
                     Login
                   </Link>
                 </div>
 
+                {/* Submit */}
                 <input
                   type="submit"
                   value="Register Now"
