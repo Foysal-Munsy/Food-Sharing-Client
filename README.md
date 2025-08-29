@@ -6,7 +6,8 @@
 [![React](https://img.shields.io/badge/React-19.1.0-blue.svg)](https://reactjs.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
-![FoodieMoodie Demo](https://i.ibb.co.com/G3kL1GNq/Foodi-Moddie-Desktop.png)
+![Desktop View](https://i.ibb.co.com/G3kL1GNq/Foodi-Moddie-Desktop.png)
+![Mobile View](https://i.ibb.co.com/gZRP0v59/Foodie-Moddie-Mobile.png)
 
 ## 🎯 What it does
 
