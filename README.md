@@ -6,7 +6,7 @@
 [![React](https://img.shields.io/badge/React-19.1.0-blue.svg)](https://reactjs.org/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)]()
 
-![FoodieMoodie Demo](https://via.placeholder.com/800x400/10b981/ffffff?text=FoodieMoodie+App+Screenshot)
+![FoodieMoodie Demo](https://i.ibb.co.com/G3kL1GNq/Foodi-Moddie-Desktop.png)
 
 ## 🎯 What it does
 
@@ -223,7 +223,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👤 Author
 
-**Your Name**
+**Foysal Munsy**
 
 - 💼 LinkedIn: [https://www.linkedin.com/in/foysal-munsy](https://www.linkedin.com/in/foysal-munsy)
 - 📧 Email: foysal613@outlook.com
